@@ -3,8 +3,9 @@
 Agent skill for **dftk** — an evidence-preserving digital forensics (DFIR) toolkit.
 
 This repo is the **standalone, canonical** copy of the `dftk` agent skill
-(`SKILL.md`). It teaches an agent how to drive dftk's 66 read-only/stateful
-forensic tools through a safety-gated Observation/Evidence contract.
+(`SKILL.md`). It teaches an agent how to drive dftk's 68 read-only/stateful
+forensic tools — including the unified-timeline and case-correlation workflow —
+through a safety-gated Observation/Evidence contract.
 
 It is published independently of the Python package so the skill can be
 distributed, reviewed, and updated on its own — without rebuilding or
