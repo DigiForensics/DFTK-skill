@@ -18,19 +18,35 @@ re-publishing `dftk` on PyPI.
 
 ## Install into an agent
 
-Copy this folder to your agent's skills directory:
+The skill is a single `SKILL.md` that every major agent loads the same way
+(folder per skill, `SKILL.md` inside), so one file serves them all.
+
+**Option A — copy this folder** into the agent's skills directory:
 
 ```bash
-# WorkBuddy / compatible
+# WorkBuddy
 cp -r . ~/.workbuddy/skills/dftk
+# Claude Code
+cp -r . ~/.claude/skills/dftk
+# OpenAI Codex
+cp -r . ~/.codex/skills/dftk
+# Hermes
+cp -r . ~/.hermes/skills/dftk
+# Agent Skills open standard (Codex, Cursor, Gemini CLI, GitHub Copilot, 70+)
+cp -r . ~/.agents/skills/dftk
 ```
 
-Or, if you already have dftk installed, let it register itself:
+**Option B — let the dftk library register itself** (after `pip install dftk`):
 
 ```bash
 pip install dftk
-dftk skill --install          # registers to ~/.workbuddy/skills/dftk
+dftk skill --install                                  # all known agents at once
+dftk skill --install --target claude,codex,hermes     # only the ones you name
+dftk skill --install --dir /path/to/skills/dftk       # custom directory
 ```
+
+Supported `--target` values: `workbuddy, claude, codex, hermes, agents,
+cursor, gemini`, or `all`.
 
 ## The toolkit (separate, required)
 
