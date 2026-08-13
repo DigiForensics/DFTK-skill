@@ -1,69 +1,34 @@
-# dftk skill
+# DFTK Skill
 
-Agent skill for **dftk** — an evidence-preserving digital forensics (DFIR) toolkit.
+The standalone Agent Skill for [DigiForensics/DFTK](https://github.com/DigiForensics/DFTK).
 
-This repo is the **standalone, canonical** copy of the `dftk` agent skill
-(`SKILL.md`). It teaches an agent how to drive dftk's 68 read-only/stateful
-forensic tools — including the unified-timeline and case-correlation workflow —
-through a safety-gated Observation/Evidence contract.
+DFTK provides deterministic forensic capabilities and structured Observation/Evidence output. This repository provides the investigation guidance that teaches an Agent how to turn a forensic claim into evidence requirements, select DFTK capabilities, verify findings, and report source-traceable conclusions.
 
-It is published independently of the Python package so the skill can be
-distributed, reviewed, and updated on its own — without rebuilding or
-re-publishing `dftk` on PyPI.
+## Version
 
-## What it is
+`3.1.0` — intended for DFTK `3.1.x` (the core reasoning contract remains compatible with DFTK 3.0 CLI concepts; native MCP described by this release is introduced in DFTK 3.1).
 
-- `SKILL.md` — the skill definition: CLI commands, the `run_tool` Python API,
-  the safety model (default read-only, network opt-in, no destructive tools),
-  and guidance for an agent's planner.
+## Install
 
-## Install into an agent
+Install the **whole `dftk/` skill directory**, not just `SKILL.md`; the main Skill loads `references/` progressively.
 
-The skill is a single `SKILL.md` that every major agent loads the same way
-(folder per skill, `SKILL.md` inside), so one file serves them all.
+Common user-level locations include:
 
-**Option A — copy this folder** into the agent's skills directory:
-
-```bash
-# WorkBuddy
-cp -r . ~/.workbuddy/skills/dftk
-# Claude Code
-cp -r . ~/.claude/skills/dftk
-# OpenAI Codex
-cp -r . ~/.codex/skills/dftk
-# Hermes
-cp -r . ~/.hermes/skills/dftk
-# Agent Skills open standard (Codex, Cursor, Gemini CLI, GitHub Copilot, 70+)
-cp -r . ~/.agents/skills/dftk
+```text
+~/.agents/skills/dftk/
+~/.kimi-code/skills/dftk/
+~/.workbuddy/skills/dftk/
+~/.claude/skills/dftk/
+~/.codex/skills/dftk/
+~/.hermes/skills/dftk/
 ```
 
-**Option B — let the dftk library register itself** (after `pip install dftk`):
+DFTK 3.1 can also install its bundled release snapshot:
 
 ```bash
-pip install dftk
-dftk skill --install                                  # all known agents at once
-dftk skill --install --target claude,codex,hermes     # only the ones you name
-dftk skill --install --dir /path/to/skills/dftk       # custom directory
+dftk skill --install
 ```
 
-Supported `--target` values: `workbuddy, claude, codex, hermes, agents,
-cursor, gemini`, or `all`.
+## Design boundary
 
-## The toolkit (separate, required)
-
-This skill only *instructs* an agent. The actual tools live in the `dftk`
-package and must be installed separately:
-
-```bash
-pip install dftk             # base toolkit, zero hard dependencies
-pip install "dftk[all]"      # + optional expert parsers (E01/TSK, Registry/EVTX, DKIM/SPF, SSH)
-# or run without installing:
-uvx dftk ...
-```
-
-Source & issues: https://github.com/DigiForensics/DFTK
-
-## License
-
-Apache License 2.0. Copyright 2026 DyNooob @ DigiForensics.
-See [LICENSE](LICENSE).
+This repository contains no forensic parser and no autonomous Agent runtime. It contains only reusable Agent instructions, references, examples, and output templates. The executable capability layer lives in the `DFTK` repository / PyPI package.
