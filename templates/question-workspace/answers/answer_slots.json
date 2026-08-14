@@ -1,0 +1,35 @@
+{
+  "Q1": {
+    "question": "涉案 APP 的包名是什么？",
+    "status": "VERIFIED",
+    "answer": "com.example.app",
+    "evidence": [
+      {
+        "path": "work/apk/AndroidManifest.xml",
+        "field": "manifest/@package",
+        "value": "com.example.app",
+        "command": "aapt dump badging evidence/apk/sample.apk",
+        "method": "aapt"
+      }
+    ]
+  },
+  "Q2": {
+    "question": "上传报告的目标 URL 是什么？",
+    "status": "CANDIDATE",
+    "answer": "https://api.example.com/report",
+    "evidence": [
+      {
+        "path": "work/apk/smali/com/example/app/Net.smali",
+        "locator": "const-string URL",
+        "value": "https://api.example.com/report"
+      }
+    ],
+    "need_verify": "确认代码调用链或网络日志 (pcap) 中确有请求发出"
+  },
+  "Q3": {
+    "question": "登录服务器的历史 IP 有哪些？",
+    "status": "UNRESOLVED",
+    "answer": null,
+    "need_verify": "需要数据库 dump 或认证日志 (evidence/server/)，当前 workspace 未提供"
+  }
+}

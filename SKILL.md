@@ -337,10 +337,6 @@ Use progressive disclosure. Do not load every domain guide for every task.
 - APK / DEX / Android application → `references/domains/android.md`
 - mobile exports / app data / communications → `references/domains/mobile.md`
 - Linux / authentication / Docker / server → `references/domains/linux.md`
-- live server over SSH / web-app / container / live DB → `references/domains/server-forensics.md` (separate `server-forensics` skill)
-- malicious executable / loader / injection / encrypted payload / crypto → `references/domains/reverse-exe.md` (separate `reverse-exe` skill)
-- Android APK / manifest / native library / packed secondary dex → `references/domains/apk.md` (separate `apk` skill)
-- network capture / PCAP / HTTP-POST / stream params → `references/domains/pcap.md` (separate `pcap` skill)
 - Windows Registry / EVTX / USB → `references/domains/windows.md`
 - PCAP / DNS / HTTP / TLS → `references/domains/network.md`
 - SQLite / SQL dump / relational claims → `references/domains/database.md`
@@ -361,3 +357,26 @@ A successful DFTK-assisted investigation is not the one with the most tool calls
 - avoids unsupported negative conclusions;
 - stops when the evidence is sufficient or genuinely exhausted;
 - leaves results reproducible for another examiner.
+
+## 16. Question workspace (解题工作区)
+
+For competition-style or multi-question tasks, organize the work in a fixed workspace so evidence, reasoning outputs, and answers stay separated and reproducible. Copy `templates/question-workspace/` and rename it to the case id.
+
+```text
+question-workspace/
+├── question.md      # 题目原文；一题一行也可以
+├── evidence/        # 原始检材，只读保存（phone/ apk/ server/ pcap/ …）
+├── work/            # Agent 输出、解包、分析，交给 AI 自己操作、规划
+├── answers/         # answer_slots.json（机器可读答案槽）+ 答案卡 markdown
+└── tools/           # 统一工具脚本：DFTK 探测到的 / 本机装的 / 用户提供的，不强求
+```
+
+Rules:
+
+- `evidence/` is **read-only**. Never mutate originals in place; write derived/unpacked output to `work/`.
+- `work/` is the Agent's scratch space — you plan and operate here.
+- `answers/answer_slots.json` is the machine-readable answer sheet (format in `references/answer-slots.md`). Also write a human-readable `answer-card.md` here when useful.
+- `tools/` holds helper scripts you discover via `dftk_doctor`, have locally, or the user provides — not required.
+- After editing `answers/answer_slots.json`, run `python tools/validate_answers.py` to self-check structure and evidence paths.
+
+Drive the contents of `answers/answer_slots.json` from this Skill's reasoning rules: derive each slot from the user's actual claim (§2), record provenance in `evidence[]`, and set `status` from the verification levels in §10 (VERIFIED / SUPPORTED / CANDIDATE / UNRESOLVED / UNSUPPORTED). Keep the original question numbering and do not bury exact answers inside prose.

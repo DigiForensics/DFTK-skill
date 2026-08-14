@@ -1,0 +1,1 @@
+# evidence/ 原始检材目录（只读）。按证据类型用子目录：phone/ apk/ server/ pcap/，其他类型按需增删。
