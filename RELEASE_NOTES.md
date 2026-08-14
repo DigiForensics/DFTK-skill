@@ -1,4 +1,4 @@
-# DFTK Skill 3.1.0
+# DFTK Skill 3.1.1
 
 DFTK Skill 3.1.0 turns the original single-file tool-use guidance into a complete but progressively loaded forensic investigation skill. The main `SKILL.md` stays focused on invariant reasoning and safety rules; detailed claim/evidence/domain guidance lives under `references/`.
 

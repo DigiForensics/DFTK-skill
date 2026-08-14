@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.1
+
+- Aligned the skill version with DFTK 3.1.1; skill content is unchanged from 3.1.0 (same investigation methodology, references, examples and templates).
+
 ## 3.1.0
 
 - Expanded the standalone skill from a single-file usage guide into a progressive-disclosure investigation skill.
