@@ -13,7 +13,7 @@ tags:
 ---
 # DFTK — Digital Forensics Toolkit
 
-DFTK is a **forensic capability layer**, not the investigator. You are the investigator.
+DFTK is a **read-only forensic toolkit**, not the investigator. You are the investigator.
 Use DFTK to obtain deterministic, source-traceable observations; use reasoning to decide what must be proven, which capability can prove it, whether the evidence is sufficient, and when to stop.
 
 The governing rule is:
@@ -34,6 +34,8 @@ Prefer **DFTK MCP** when the host Agent exposes these tools:
 - `dftk_read_case_run`
 
 MCP is the preferred Agent interface because policy, evidence-root scope, timeout, and output bounding are controlled by the DFTK server rather than by model-generated shell text.
+
+**External toolchain discovery.** `dftk_doctor` reports which external forensic binaries (jadx, apktool, tshark, ghidra, radare2, …) are present on the host in an `external` section — pure discovery, no execution. If a tool depends on one, declare it via `requires=("jadx",)`; `dftk_run` returns `unsupported` when the binary is absent (resolved on PATH or via its `DFTK_<DOMAIN>_TOOL_DIRS` env dir). Prefer this over blindly invoking binaries from shell text.
 
 If MCP is unavailable, use the existing DFTK CLI:
 
@@ -335,6 +337,10 @@ Use progressive disclosure. Do not load every domain guide for every task.
 - APK / DEX / Android application → `references/domains/android.md`
 - mobile exports / app data / communications → `references/domains/mobile.md`
 - Linux / authentication / Docker / server → `references/domains/linux.md`
+- live server over SSH / web-app / container / live DB → `references/domains/server-forensics.md` (separate `server-forensics` skill)
+- malicious executable / loader / injection / encrypted payload / crypto → `references/domains/reverse-exe.md` (separate `reverse-exe` skill)
+- Android APK / manifest / native library / packed secondary dex → `references/domains/apk.md` (separate `apk` skill)
+- network capture / PCAP / HTTP-POST / stream params → `references/domains/pcap.md` (separate `pcap` skill)
 - Windows Registry / EVTX / USB → `references/domains/windows.md`
 - PCAP / DNS / HTTP / TLS → `references/domains/network.md`
 - SQLite / SQL dump / relational claims → `references/domains/database.md`
