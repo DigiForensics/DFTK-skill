@@ -1,7 +1,7 @@
 ---
 name: dftk
 description: Evidence-preserving digital forensics with DFTK. Use for lawful analysis of APK/Android artifacts, mobile exports, Linux and Windows evidence, SQLite, PCAP/PCAPNG, browser data, email, disk images, timelines, hashes, strings, archives, and related forensic artifacts. Prefer evidence requirements over keyword hunting, use DFTK's structured Observation/Evidence contract, distinguish unsupported/error/blocked from true negative findings, and cite source provenance for conclusions.
-version: 3.2.0
+version: 3.2.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 tags:
