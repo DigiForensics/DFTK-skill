@@ -4,6 +4,7 @@ description: Live Linux server and web-application forensics using standard read
 version: 1.0.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
+copyright: Copyright 2026 DyNooob @ DigiForensics
 tags:
   - forensics
   - dfir

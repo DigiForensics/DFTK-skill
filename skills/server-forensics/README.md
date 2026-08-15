@@ -36,14 +36,14 @@ Common user-level locations:
 Manual install (copy the directory):
 
 ```bash
-git clone https://github.com/DigiForensics/DFTK
-cp -r DFTK/skills/server-forensics ~/.workbuddy/skills/server-forensics
+git clone https://github.com/DigiForensics/DFTK-skill
+cp -r DFTK-skill/skills/server-forensics ~/.workbuddy/skills/server-forensics
 ```
 
 Or, if you already have the DFTK repo locally:
 
 ```bash
-cp -r /path/to/DFTK/skills/server-forensics ~/.workbuddy/skills/server-forensics
+cp -r /path/to/DFTK-skill/skills/server-forensics ~/.workbuddy/skills/server-forensics
 ```
 
 Then restart/refresh the Agent so it loads the new skill.

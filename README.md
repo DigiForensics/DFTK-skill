@@ -23,7 +23,7 @@ Common user-level locations:
 ~/.hermes/skills/dftk/
 ```
 
-Or install the bundled release snapshot from DFTK 3.1:
+Or install the matching release snapshot via `dftk skill --install` (fetches the `v{TOOLKIT_VERSION}` tag from this repo):
 
 ```bash
 dftk skill --install

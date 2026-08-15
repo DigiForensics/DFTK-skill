@@ -35,12 +35,12 @@ reverse-exe/
 ```
 
 ## Install (copy the directory)
-This skill lives inside the DFTK repository at `skills/reverse-exe/`
+This skill lives inside the DFTK-skill repository at `skills/reverse-exe/`
 (alongside `skills/dftk`). It is **not** published to PyPI and not auto-installed
 by `dftk`. To use it as a standalone skill, copy the directory:
 ```bash
-git clone https://github.com/DigiForensics/DFTK
-cp -r DFTK/skills/reverse-exe ~/.workbuddy/skills/reverse-exe
+git clone https://github.com/DigiForensics/DFTK-skill
+cp -r DFTK-skill/skills/reverse-exe ~/.workbuddy/skills/reverse-exe
 ```
 
 ## Reasoning contract

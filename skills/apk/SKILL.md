@@ -9,6 +9,13 @@ description: >-
   — never install or execute the app. Teaches technique, not answers.
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
+author: DyNooob @ DigiForensics
+version: 1.0.0
+tags:
+  - forensics
+  - dfir
+  - android
+  - apk
 ---
 
 # APK (static, read-only)

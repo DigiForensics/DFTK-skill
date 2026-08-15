@@ -345,6 +345,10 @@ Use progressive disclosure. Do not load every domain guide for every task.
 - MIME / DKIM / SPF / DNS email evidence → `references/domains/email.md`
 - E01 / filesystem image → `references/domains/disk.md`
 - chronology / event fusion → `references/domains/timeline.md`
+- APK / Android application static analysis → `references/domains/apk.md`
+- network capture (PCAP) analysis → `references/domains/pcap.md`
+- executable reverse engineering (static) → `references/domains/reverse-exe.md`
+- live server forensics (SSH / local shell) → `references/domains/server-forensics.md`
 
 ## 15. The quality bar
 

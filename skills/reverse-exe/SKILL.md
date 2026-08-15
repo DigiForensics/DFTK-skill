@@ -8,6 +8,13 @@ description: >-
   the analysis host. Teaches technique, not answers.
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
+author: DyNooob @ DigiForensics
+version: 1.0.0
+tags:
+  - forensics
+  - dfir
+  - reverse-engineering
+  - malware
 ---
 
 # Reverse / EXE (static, read-only)

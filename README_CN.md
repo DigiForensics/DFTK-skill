@@ -23,7 +23,7 @@ DFTK 提供确定性的取证能力与结构化的 `Observation / Evidence` 输�
 ~/.hermes/skills/dftk/
 ```
 
-或安装 DFTK 3.1 发行版内置的快照：
+或通过 `dftk skill --install` 安装对应版本快照（拉取 `v{TOOLKIT_VERSION}` 标签）：
 
 ```bash
 dftk skill --install

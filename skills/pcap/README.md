@@ -33,13 +33,13 @@ pcap/
 
 ## Install (copy the directory)
 
-This skill lives inside the DFTK repository at `skills/pcap/` (alongside
+This skill lives inside the DFTK-skill repository at `skills/pcap/` (alongside
 `skills/dftk`). It is **not** published to PyPI and not auto-installed by
 `dftk`. To use it as a standalone skill, copy the directory:
 
 ```bash
-git clone https://github.com/DigiForensics/DFTK
-cp -r DFTK/skills/pcap ~/.workbuddy/skills/pcap
+git clone https://github.com/DigiForensics/DFTK-skill
+cp -r DFTK-skill/skills/pcap ~/.workbuddy/skills/pcap
 ```
 
 ## Reasoning contract
