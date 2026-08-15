@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Documented DFTK's chain-of-custody audit ledger: `references/direct-cli.md` gains a section on `--audit` / `DFTK_AUDIT_LOG`, and SKILL.md §13 points to it for examinations that need a defensible record of what was executed. Requires a DFTK build that provides the ledger (post-3.2.1); the guidance is inert on older releases.
+
 ## 3.2.1
 
 - Aligned the skill version with DFTK 3.2.1; skill content is unchanged from 3.2.0 (same `dftk prepare` / toolchain guidance, references, examples, and templates).

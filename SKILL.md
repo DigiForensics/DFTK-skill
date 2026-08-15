@@ -329,6 +329,8 @@ For competition-style multi-question tasks, preserve the original numbering and 
 
 For formal reports, read `references/reporting.md` and use templates only when useful.
 
+When the examination needs a defensible record of what was executed — not just what was concluded — run tools with DFTK's audit ledger enabled (`--audit <path>`, or set `DFTK_AUDIT_LOG` once for the session). It appends one JSONL line per run with the timestamp, tool, parameters, status and evidence hashes. This is a record of your process, not a substitute for citing evidence in the answer; see `references/direct-cli.md`.
+
 ## 14. Domain references — load only when needed
 
 Use progressive disclosure. Do not load every domain guide for every task.
