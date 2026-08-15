@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.2.0
+
+- Aligned the skill version with DFTK 3.2.0; added `references/toolchain.md` and SKILL.md §1 guidance describing `dftk prepare` so recipients can register an extracted forensic toolkit without manual PATH edits.
+
 ## 3.1.1
 
 - Aligned the skill version with DFTK 3.1.1; skill content is unchanged from 3.1.0 (same investigation methodology, references, examples and templates).

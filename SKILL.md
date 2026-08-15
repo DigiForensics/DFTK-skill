@@ -1,7 +1,7 @@
 ---
 name: dftk
 description: Evidence-preserving digital forensics with DFTK. Use for lawful analysis of APK/Android artifacts, mobile exports, Linux and Windows evidence, SQLite, PCAP/PCAPNG, browser data, email, disk images, timelines, hashes, strings, archives, and related forensic artifacts. Prefer evidence requirements over keyword hunting, use DFTK's structured Observation/Evidence contract, distinguish unsupported/error/blocked from true negative findings, and cite source provenance for conclusions.
-version: 3.1.1
+version: 3.2.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 tags:
@@ -35,7 +35,7 @@ Prefer **DFTK MCP** when the host Agent exposes these tools:
 
 MCP is the preferred Agent interface because policy, evidence-root scope, timeout, and output bounding are controlled by the DFTK server rather than by model-generated shell text.
 
-**External toolchain discovery.** `dftk_doctor` reports which external forensic binaries (jadx, apktool, tshark, ghidra, radare2, …) are present on the host in an `external` section — pure discovery, no execution. If a tool depends on one, declare it via `requires=("jadx",)`; `dftk_run` returns `unsupported` when the binary is absent (resolved on PATH or via its `DFTK_<DOMAIN>_TOOL_DIRS` env dir). Prefer this over blindly invoking binaries from shell text.
+**External toolchain discovery.** `dftk_doctor` reports which external forensic binaries (jadx, apktool, tshark, ghidra, radare2, …) are present on the host in an `external` section — pure discovery, no execution. If a tool depends on one, declare it via `requires=("jadx",)`; `dftk_run` returns `unsupported` when the binary is absent. Resolution order is PATH → `DFTK_<DOMAIN>_TOOL_DIRS` env dir → a unified `$DFTK_TOOLS` root or the config written by `dftk prepare` → the DFTK-managed shim dir. **When you ship a forensic-toolkit zip, run `dftk prepare <extracted_root>` once** so the tools are found on every later `dftk` call without editing PATH — and stay readable by the agent even when the toolkit is on an exotic / non-PATH drive. See `references/toolchain.md` for the recipient flow and fallbacks. Prefer this over blindly invoking binaries from shell text.
 
 If MCP is unavailable, use the existing DFTK CLI:
 
