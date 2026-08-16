@@ -1,6 +1,6 @@
 # Direct CLI mode
 
-Use this when the host Agent cannot use DFTK MCP.
+Use this when the host Agent cannot use DFTK MCP. To enable MCP instead (preferred — server-enforced policy), see `mcp-setup.md`.
 
 ## Discovery
 

@@ -6,7 +6,7 @@ DFTK 提供确定性的取证能力与结构化的 `Observation / Evidence` 输�
 
 ## 版本
 
-`3.2.1`，与 DFTK `3.2.x` 对齐。
+`3.3.0`，与 DFTK `3.3.x` 对齐。
 
 ## 安装
 
@@ -42,3 +42,9 @@ dftk/
 ## 设计边界
 
 本仓库不含取证解析器，也不实现 Agent 运行时。它只放 Agent 指令、references、examples 和 templates。执行能力仍在 `DFTK` 主仓库 / PyPI 包中。
+
+## 维护者
+
+- **维护者：** [DyNooob](https://github.com/DyNooob) — DigiForensics · [博客](https://buno.dev)
+- **所属组织：** [DigiForensics](https://www.digiforensics.cn) · [LLMCN](https://www.llmcn.org)
+- **许可证：** [Apache-2.0](LICENSE)

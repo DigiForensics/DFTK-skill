@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "dftk": {
+      "command": "dftk",
+      "args": [
+        "mcp",
+        "--root", "/abs/path/to/evidence",
+        "--workspace", ".dftk",
+        "--max-safety", "READ_ONLY",
+        "--timeout", "180"
+      ]
+    }
+  }
+}

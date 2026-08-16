@@ -1,7 +1,7 @@
 ---
 name: dftk
 description: Evidence-preserving digital forensics with DFTK. Use for lawful analysis of APK/Android artifacts, mobile exports, Linux and Windows evidence, SQLite, PCAP/PCAPNG, browser data, email, disk images, timelines, hashes, strings, archives, and related forensic artifacts. Prefer evidence requirements over keyword hunting, use DFTK's structured Observation/Evidence contract, distinguish unsupported/error/blocked from true negative findings, and cite source provenance for conclusions.
-version: 3.2.1
+version: 3.3.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 tags:
@@ -34,6 +34,10 @@ Prefer **DFTK MCP** when the host Agent exposes these tools:
 - `dftk_read_case_run`
 
 MCP is the preferred Agent interface because policy, evidence-root scope, timeout, and output bounding are controlled by the DFTK server rather than by model-generated shell text.
+
+The server is started with `dftk mcp --root <evidence_dir>` (requires `pip install "dftk[mcp]"`). Full launch flags, the six-tool contract, the server-owned safety / root / network / timeout / audit policy, and the WorkBuddy `mcp.json` snippet to connect it live are in `references/mcp-setup.md`.
+
+**Engagement orchestration.** For a full forensic engagement (not a one-off lookup), start with the `case-orchestrator` skill — it routes the goal to the right specialist sub-skills and drives them through the verified MCP loop (`dftk_case` → `dftk_search_capabilities` → `dftk_describe` → `dftk_run` → `dftk_read_case_run` → `dftk_case` handoff), keeping every action inside one CaseSession for continuous chain of custody.
 
 **External toolchain discovery.** `dftk_doctor` reports which external forensic binaries (jadx, apktool, tshark, ghidra, radare2, …) are present on the host in an `external` section — pure discovery, no execution. If a tool depends on one, declare it via `requires=("jadx",)`; `dftk_run` returns `unsupported` when the binary is absent. Resolution order is PATH → `DFTK_<DOMAIN>_TOOL_DIRS` env dir → a unified `$DFTK_TOOLS` root or the config written by `dftk prepare` → the DFTK-managed shim dir. **When you ship a forensic-toolkit zip, run `dftk prepare <extracted_root>` once** so the tools are found on every later `dftk` call without editing PATH — and stay readable by the agent even when the toolkit is on an exotic / non-PATH drive. See `references/toolchain.md` for the recipient flow and fallbacks. Prefer this over blindly invoking binaries from shell text.
 
@@ -351,6 +355,43 @@ Use progressive disclosure. Do not load every domain guide for every task.
 - network capture (PCAP) analysis → `references/domains/pcap.md`
 - executable reverse engineering (static) → `references/domains/reverse-exe.md`
 - live server forensics (SSH / local shell) → `references/domains/server-forensics.md`
+
+### Integrated sub-skills (reverse / forensics / defensive)
+
+The `skills/` directory holds progressive-disclosure sub-skills. Load one only when the
+task matches its scope. These cover reverse-engineering, digital forensics, malware
+analysis, protocol and mobile reverse, threat hunting, code audit, and defensive security
+topics, all re-cast to DFTK's read-only / evidence-preservation / chain-of-custody contract.
+Each module is licensed under Apache-2.0; see its `LICENSE` file.
+Need help choosing? → `references/skill-router.md` (task → skill matrix).
+
+- **engagement lead — orchestrate a full case end to end** → `skills/case-orchestrator/SKILL.md`
+- binary / CLI analysis (radare2) → `skills/radare2/SKILL.md`
+- APK tool methodology (jadx / apktool / frida) → `skills/apk-reverse/SKILL.md`
+- APK static forensic triage (no execution) → `skills/apk/SKILL.md`
+- IDA Pro decompilation → `skills/ida-reverse/SKILL.md`
+- .NET / C# reverse (dnSpyEx / de4dot) → `skills/dotnet-reverse/SKILL.md`
+- front-end JS reverse → `skills/js-reverse/SKILL.md`
+- open-source RE (Ghidra) → `skills/ghidra-reverse/SKILL.md`
+- stripped Go / Rust recovery → `skills/go-rust-reverse/SKILL.md`
+- macOS / Mach-O RE → `skills/macos-reverse/SKILL.md`
+- browser extension RE → `skills/browser-extension-reverse/SKILL.md`
+- desktop thick-client review → `skills/thick-client/SKILL.md`
+- cross-version symbol migration → `skills/binary-diff/SKILL.md`
+- digital forensics & IR triage → `skills/digital-forensics/SKILL.md`
+- malware analysis → `skills/malware-analysis/SKILL.md`
+- general reverse-engineering methodology → `skills/reverse-engineering/SKILL.md`
+- protocol / binary protocol reverse → `skills/protocol-reverse/SKILL.md`
+- mobile (Android / iOS) reverse → `skills/mobile-reverse/SKILL.md`
+- threat hunting (blue team) → `skills/threat-hunting/SKILL.md`
+- white-box code audit (SAST) → `skills/code-audit/SKILL.md`
+- read-only evidence-graph case review → `skills/case-review/SKILL.md`
+- firmware forensics (OWASP FSTM) → `skills/firmware-forensics/SKILL.md`
+- supply-chain security (SBOM / SCA / CI-CD) → `skills/supply-chain-security/SKILL.md`
+- email security & phishing analysis → `skills/email-security/SKILL.md`
+- identity federation (SAML / OIDC / OAuth) → `skills/identity-federation/SKILL.md`
+- database security assessment → `skills/database-security/SKILL.md`
+- OT / ICS safe assessment → `skills/ot-ics/SKILL.md`
 
 ## 15. The quality bar
 

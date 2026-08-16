@@ -24,7 +24,7 @@
 
 ### <question>
 
-> (paste `templates/claim-card.md` per question)
+> (paste `claim-card.md` per question)
 
 ## Divergences / assumptions
 

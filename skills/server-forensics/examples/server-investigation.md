@@ -24,21 +24,21 @@ Build one inventory and reuse it across questions.
 
 ## How each question type was answered (technique, not answers)
 
-**Partition identity.** "Last 8 chars of `sda3` PARTUUID, uppercase" → `blkid /dev/sda3`, take the `PARTUUID`, strip `-`, last 8 hex, upper-case. Distinguish `PARTUUID` (partition table) from filesystem `UUID`. See `references/partition-identity.md`.
+**Partition identity.** "Last 8 chars of `sda3` PARTUUID, uppercase" → `blkid /dev/sda3`, take the `PARTUUID`, strip `-`, last 8 hex, upper-case. Distinguish `PARTUUID` (partition table) from filesystem `UUID`. See `../references/partition-identity.md`.
 
-**External-port ambiguity.** A DB service runs in a container publishing `HOST:3399->3306`. The app connects to `3306` (container port); an external client reaches `3399` (host-published). When the wording says "对外端口", report the host-published port and note the container port. Always state both when they differ. See `references/service-port-enum.md`.
+**External-port ambiguity.** A DB service runs in a container publishing `HOST:3399->3306`. The app connects to `3306` (container port); an external client reaches `3399` (host-published). When the wording says "对外端口", report the host-published port and note the container port. Always state both when they differ. See `../references/service-port-enum.md`.
 
-**Web-config credential.** A "DB password" / "config filename" question → `grep -rniE "dbhost|dbuser|password|dsn"` in the app root; read the matched file; report the value and the file basename. See `references/web-config-review.md`.
+**Web-config credential.** A "DB password" / "config filename" question → `grep -rniE "dbhost|dbuser|password|dsn"` in the app root; read the matched file; report the value and the file basename. See `../references/web-config-review.md`.
 
-**PII by stable key.** A "phone/email of person X" question → the name may be mojibake in the dump, so a name `LIKE` returns nothing. Search by `mtel`/`memail` (or a Latin account id) instead, then read back the target field. See `references/live-db-forensics.md`.
+**PII by stable key.** A "phone/email of person X" question → the name may be mojibake in the dump, so a name `LIKE` returns nothing. Search by `mtel`/`memail` (or a Latin account id) instead, then read back the target field. See `../references/live-db-forensics.md`.
 
-**Aggregation.** A "total amount" question → `SELECT SUM(col)` with an explicit predicate; convert units for the answer format and show the raw sum. See `references/live-db-forensics.md`.
+**Aggregation.** A "total amount" question → `SELECT SUM(col)` with an explicit predicate; convert units for the answer format and show the raw sum. See `../references/live-db-forensics.md`.
 
-**Encrypted archive.** An "algorithm + password" question → identify `Salted__`, recover cipher+password by successful decrypt, verify with `tar tzf`. See `references/encrypted-archive.md` and `examples/encrypted-archive-decrypt.md`.
+**Encrypted archive.** An "algorithm + password" question → identify `Salted__`, recover cipher+password by successful decrypt, verify with `tar tzf`. See `../references/encrypted-archive.md` and `encrypted-archive-decrypt.md`.
 
-**Container DB.** A stopped evidence container → `docker start` it read-only, then `docker exec mysql` over the container loopback (host-bridge connections are often denied by the grant). `SELECT` only. See `references/container-evidence.md`.
+**Container DB.** A stopped evidence container → `docker start` it read-only, then `docker exec mysql` over the container loopback (host-bridge connections are often denied by the grant). `SELECT` only. See `../references/container-evidence.md`.
 
-**Group ownership / table name.** Join `owner_id -> user.id`; enumerate `information_schema.tables` to find the chat table. See `references/live-db-forensics.md`.
+**Group ownership / table name.** Join `owner_id -> user.id`; enumerate `information_schema.tables` to find the chat table. See `../references/live-db-forensics.md`.
 
 ## Skill gaps this case exposed
 

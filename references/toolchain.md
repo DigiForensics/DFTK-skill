@@ -13,7 +13,7 @@ read, or onto a drive that is not on PATH, the tools are silently unusable.
 
 ## Steps for the recipient
 
-1. Install DFTK and the skill (per `SKILL.md` §1 / the deployment notes).
+1. Install DFTK and the skill (per `../SKILL.md` §1 / the deployment notes).
 2. Extract the forensic-toolkit zip to any writable directory, e.g. `E:\TOOLKIT`.
    The drive letter does not matter.
 3. Run once:

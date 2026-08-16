@@ -6,7 +6,7 @@ DFTK provides deterministic forensic capabilities and structured Observation/Evi
 
 ## Version
 
-`3.2.1` — for DFTK `3.2.x`.
+`3.3.0` — for DFTK `3.3.x`.
 
 ## Install
 
@@ -42,3 +42,9 @@ dftk/
 ## Design boundary
 
 This repository contains no forensic parser and no Agent runtime. It holds Agent instructions, references, examples, and templates. The executable capabilities live in the `DFTK` repository / PyPI package.
+
+## Maintainer
+
+- **Maintainer:** [DyNooob](https://github.com/DyNooob) — DigiForensics · [blog](https://buno.dev)
+- **Organizations:** [DigiForensics](https://www.digiforensics.cn) · [LLMCN](https://www.llmcn.org)
+- **License:** [Apache-2.0](LICENSE)

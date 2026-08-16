@@ -32,8 +32,8 @@ cp -r <skill>/templates/question-workspace <案例id> && cd <案例id>
   如果必须解包 / 解码，把产物写到 `work/`。
 - `work/` 是 Agent 的草稿区 —— 解包、解码输出、中间分析都放这里。由你（Agent）自己
   规划、操作。
-- `answers/answer_slots.json` 是机器可读的答案表（格式见 `references/answer-slots.md`）。
-  需要时也可在这里放一份人读的答案卡 `answer-card.md`。
+- `answers/answer_slots.json` 是机器可读的答案表（格式见 `../../references/answer-slots.md`）。
+  需要时也可在这里放一份人读的答案卡 `../../templates/answer-card.md`。
 - `tools/` 放你通过 `dftk_doctor` 探测到的外部工具、本机已有的、或用户提供的辅助脚本。
   不强求 —— DFTK 自带能力已覆盖大部分需求。
 
@@ -50,5 +50,5 @@ cp -r <skill>/templates/question-workspace <案例id> && cd <案例id>
 ## 配合其它 skill 文档
 
 - 推理方法：SKILL.md §2（claim-first）、§7（证据模型）、§10（verification levels）。
-- 答案格式：`references/answer-slots.md`；人读答案卡：`templates/answer-card.md`。
+- 答案格式：`../../references/answer-slots.md`；人读答案卡：`templates/answer-card.md`。
 - 领域参考：SKILL.md §14（android / mobile / network / database / …）。
