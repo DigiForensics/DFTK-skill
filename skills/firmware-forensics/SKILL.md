@@ -173,7 +173,7 @@ When a suspected flaw is found:
 
 ## Quality bar
 
-A defensible firmware-forensics pass hashes every artifact, extracts and analyzes the
+A complete firmware-forensics pass hashes every artifact, extracts and analyzes the
 filesystem, preserves provenance, and — if a flaw is found — validates it in an
 isolated lab and routes it to responsible disclosure rather than exploitation.
 

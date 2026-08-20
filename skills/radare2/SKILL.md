@@ -210,7 +210,7 @@ Step 3 is not an optional optimization — it is the gate before deep analysis.
 
 ## Quality bar
 
-A defensible radare2 pass records the import table as evidence, separates fact
+A complete radare2 pass records the import table as evidence, separates fact
 from inference, preserves provenance, and leaves a reproducible command trail
 that another analyst can re-run.
 

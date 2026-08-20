@@ -138,7 +138,7 @@ memory, patch, types, stack, signatures, sessions) is catalogued in
 
 ## Quality bar
 
-A defensible IDA pass records imports as evidence, surveys before diving, follows
+A complete IDA pass records imports as evidence, surveys before diving, follows
 cross-references, annotates findings, and leaves a reproducible report another
 analyst can extend.
 

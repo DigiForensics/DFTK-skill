@@ -142,7 +142,7 @@ State at minimum:
 
 ## Quality bar
 
-A defensible APK pass preserves provenance, separates fact from inference,
+A complete APK pass preserves provenance, separates fact from inference,
 keeps the original immutable, and — for any dynamic step — confirms authorized
 scope before executing.
 

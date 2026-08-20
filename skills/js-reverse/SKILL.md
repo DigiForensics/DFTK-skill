@@ -120,7 +120,7 @@ and business-logic distillation.
 
 ## Quality bar
 
-A defensible JS-reverse pass observes before guessing, builds the local
+A complete JS-reverse pass observes before guessing, builds the local
 environment only from page evidence, records provenance for every step, and
 separates fact from inference — leaving a reproducible Node reproduction another
 analyst can run.

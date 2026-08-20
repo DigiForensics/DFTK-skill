@@ -9,7 +9,7 @@ first; CLI fallback in parentheses. Evidence root is `/evidence`, case
 > Memory analysis and the Plaso layer are *external* tools. DFTK is used for the
 > artifacts it genuinely parses — E01 image metadata (`image.e01_*`), file hashes,
 > strings, and filesystem/observation timelines (`timeline.*`, `recipe.timeline.*`).
-> All capability names below were confirmed against the live DFTK 3.3.0 registry.
+> All capability names below were confirmed against the live DFTK 3.4.0 registry.
 
 ## 0 — open the case
 

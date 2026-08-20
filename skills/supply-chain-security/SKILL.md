@@ -153,7 +153,7 @@ Risk matrix:
 
 ## Quality bar
 
-A defensible supply-chain assessment produces an SBOM, separates reachable from
+A complete supply-chain assessment produces an SBOM, separates reachable from
 unreachable findings, reviews the pipeline's own security, and ends with prioritized
 remediation — all with reproducible scan commands recorded.
 

@@ -9,7 +9,7 @@ Use this skill when the evidence is a **running Linux server** whose answers liv
 - an OpenSSL-encrypted archive (`*.enc` / `Salted__`);
 - containerized workloads (`docker` volumes, compose projects).
 
-Do **not** use it for a local file or disk image — that is DFTK's job (`dftk` skill, 68 read-only tools). The two share the same reasoning contract.
+For a local file or disk image, use DFTK instead (`dftk` skill; 71 read-only tools). The two use the same evidence and reporting approach.
 
 ## Reasoning loop
 

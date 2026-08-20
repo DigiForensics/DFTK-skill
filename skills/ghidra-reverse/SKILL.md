@@ -99,7 +99,7 @@ analyzeHeadless /path/to/project Proj -import sample.bin -postScript ExportDecom
 
 ## Quality bar
 
-A defensible Ghidra pass uses real, resolved tool paths, annotates function
+A complete Ghidra pass uses real, resolved tool paths, annotates function
 addresses and renames, leaves reproducible steps, and records provenance for every
 finding.
 

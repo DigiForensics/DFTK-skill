@@ -2,15 +2,29 @@
 
 The standalone Agent Skill for [DigiForensics/DFTK](https://github.com/DigiForensics/DFTK).
 
-DFTK provides deterministic forensic capabilities and structured Observation/Evidence output. This repository teaches an Agent how to turn a forensic question into evidence requirements, choose the right DFTK capabilities, verify the findings, and write conclusions that trace back to source.
+DFTK provides structured forensic capabilities and `Observation`/`Evidence` results. This repository contains the investigation guidance for defining evidence requirements, selecting capabilities, checking findings, and reporting their sources.
+
+## Installation
+
+The recommended installation path is to give an Agent the primary DFTK repository
+URL:
+
+```text
+https://github.com/DigiForensics/DFTK
+```
+
+The Agent installs `dftk[mcp]`; `dftk agent setup --install-skill` then fetches this
+matching DFTK-skill release into its own host directory and emits a reviewable MCP
+configuration fragment. The exact, safe
+sequence is in [INSTALL_AGENT.md](INSTALL_AGENT.md).
 
 ## Version
 
-`3.3.0` — for DFTK `3.3.x`.
+`3.4.0` — for DFTK `3.4.x`.
 
 ## Install
 
-Install the **whole `dftk/` skill directory**, not just `SKILL.md`. The skill loads `references/` on demand, so omitting that folder breaks the guidance.
+Install the complete skill directory, including `references/`, examples, templates, and `skills/`. The entry-point file alone is insufficient.
 
 Common user-level locations:
 
@@ -33,15 +47,21 @@ dftk skill --install
 
 ```text
 dftk/
-  SKILL.md            # entry point: when to use DFTK, how to scope a case
-  references/         # domain playbooks, loaded progressively
-  examples/           # worked investigation snippets
-  templates/          # output report templates
+  SKILL.md            # entry point and case-scoping guidance
+  references/         # topic-specific guidance, loaded when needed
+  examples/           # investigation examples
+  templates/          # report templates
 ```
 
 ## Design boundary
 
-This repository contains no forensic parser and no Agent runtime. It holds Agent instructions, references, examples, and templates. The executable capabilities live in the `DFTK` repository / PyPI package.
+This repository contains guidance and templates, not forensic parsers or an Agent runtime. Executable capabilities are provided by the `DFTK` repository and PyPI package.
+
+The generated [capability catalog](references/capabilities.md) is tied to the
+matching DFTK release manifest.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for documentation ownership and the specialist
+skill format.
 
 ## Maintainer
 

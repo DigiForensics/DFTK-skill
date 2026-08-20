@@ -76,7 +76,7 @@ Windows IdP, pair with `server-forensics`.
 
 ## Quality bar
 
-A defensible identity-federation pass maps the full SSO flow, reproduces each misconfig
+A complete identity-federation pass maps the full SSO flow, reproduces each misconfig
 with impact, records provenance, and ends with prioritized hardening — never with an
 account-compromise recipe against real users.
 

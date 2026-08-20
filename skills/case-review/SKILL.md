@@ -18,7 +18,7 @@ tags:
 
 A read-only quality gate for a case package before report handoff. It audits an existing `work/<case>/` directory without changing the case or touching any target. The point is defensibility: every Finding traces to Evidence, every Evidence is reproducible, and the chain of custody holds.
 
-This skill is the natural companion to the DFTK 3.3.0 audit ledger (`--audit` / `DFTK_AUDIT_LOG`): the ledger records *process* (what commands ran, with evidence hashes); this skill validates *structure* (does the report hold together).
+This skill is the natural companion to the DFTK 3.4.0 audit ledger (`--audit` / `DFTK_AUDIT_LOG`): the ledger records *process* (what commands ran, with evidence hashes); this skill validates *structure* (does the report hold together).
 
 ## Scope
 
@@ -76,7 +76,7 @@ After each phase, present 3–6 numbered options (e.g. fix scope field / complet
 ## Domain references
 - review checklist → `templates/review-checklist.md`
 - evidence model & claim-card format → DFTK-skill `../server-forensics/templates/claim-card.md`
-- audit ledger (process provenance) → DFTK `../../references/direct-cli.md` and the DFTK 3.3.0 release notes
+- audit ledger (process provenance) → DFTK `../../references/direct-cli.md` and the DFTK 3.4.0 release notes
 
 ## Quality bar
 A case passes review only when every Finding cites existing, reproducible Evidence; every Evidence carries a command + hash; timeline/workitems are linked; and hash integrity is verified or its omission explained. The review is not legal advice and does not replace organizational evidence-handling procedures.

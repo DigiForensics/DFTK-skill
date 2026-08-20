@@ -126,7 +126,7 @@ A=Android, I=iOS
 - protection bypass review → `references/anti-detection-bypass.md`
 
 ## Quality bar
-A defensible mobile pass records the app hash, assesses static structure, reviews protection mechanisms (not just bypasses them), extracts/characterizes crypto where authorized, and redacts secrets. It respects scope and device authorization.
+A complete mobile pass records the app hash, assesses static structure, reviews protection mechanisms (not just bypasses them), extracts/characterizes crypto where authorized, and redacts secrets. It respects scope and device authorization.
 
 ---
 

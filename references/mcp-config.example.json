@@ -5,7 +5,7 @@
       "args": [
         "mcp",
         "--root", "/abs/path/to/evidence",
-        "--workspace", ".dftk",
+        "--workspace", "/abs/path/to/case-workspace",
         "--max-safety", "READ_ONLY",
         "--timeout", "180"
       ]

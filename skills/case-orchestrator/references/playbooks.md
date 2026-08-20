@@ -59,8 +59,10 @@ describe, run, page with `value_limit` raised for large captures.
 
 ## 5. Web app / thick client / browser extension
 
-`thick-client` (trust boundary) + `browser-extension-reverse` (permission surface) +
-`web-forensics`. Search seeds: `browser`, `url`, `cookie`, `storage`.
+`web-forensics` for saved configuration, deployment, and access-log evidence;
+`thick-client` for desktop trust boundaries; `browser-extension-reverse` for extension
+permissions. For a live host, hand off to `server-forensics`. Search seeds: `browser`,
+`url`, `cookie`, `storage`, `web config`, `access log`.
 
 ## 6. Malware / unpacking
 

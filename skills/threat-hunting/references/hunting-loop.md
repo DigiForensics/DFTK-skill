@@ -40,4 +40,4 @@ The threat-hunting loop turns a hypothesis into validated detections. Run it as 
 
 ## Quality bar
 
-A loop iteration is complete only when the hypothesis is either supported by evidence or explicitly disproven, and any detection ships with stated false positives. Never validate detections against an unauthorized production environment, and enable the DFTK 3.3.0 audit ledger for any local tooling runs so the hunt is reproducible.
+A loop iteration is complete only when the hypothesis is either supported by evidence or explicitly disproven, and any detection ships with stated false positives. Never validate detections against an unauthorized production environment, and enable the DFTK 3.4.0 audit ledger for any local tooling runs so the hunt is reproducible.

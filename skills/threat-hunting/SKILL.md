@@ -19,12 +19,17 @@ tags:
 
 Defensive, blue-team discipline: form a hypothesis, hunt the data, validate, and turn findings into durable detections. Never run attack simulation against an unauthorized production environment.
 
+For offline Windows EVTX evidence, prefer `windows.evtx_hunt` over an EventID
+summary when the question concerns logons, process execution, PowerShell, service
+installation, scheduled tasks, audit-log clearing, or Sysmon activity. Treat a
+hunt hit as a source-linked lead that still requires contextual verification.
+
 ## Operating contract
 
 - Confirm blue-team authorization and the data-source scope (SIEM, EDR exports, logs).
 - Hunt the hypothesis; do not blindly sweep alerts.
 - Declassify IOCs by sensitivity before sharing.
-- Record queries and results; enable the DFTK 3.3.0 audit ledger where commands run locally.
+- Record queries and results; enable the DFTK 3.4.0 audit ledger where commands run locally.
 
 ## When this skill applies
 
@@ -75,7 +80,7 @@ Example: attacker used living-off-the-land for lateral movement.
 - related: `../digital-forensics/`, `../malware-analysis/`
 
 ## Quality bar
-A defensible hunt states a clear hypothesis and conclusion, documents queries and data sources, and ships detections that name their false-positive surface. It never validates detections against an unauthorized production environment.
+A complete hunt states a clear hypothesis and conclusion, documents queries and data sources, and ships detections that name their false-positive surface. It never validates detections against an unauthorized production environment.
 
 ---
 

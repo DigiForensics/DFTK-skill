@@ -65,7 +65,7 @@ identity side, hand off to `identity-federation`.
 
 ## Quality bar
 
-A defensible email-security pass gives a complete header-authentication verdict, turns
+A complete email-security pass gives a complete header-authentication verdict, turns
 the sample into detectable IOCs, and reviews the tenant's anti-phishing controls —
 without re-delivering the malicious content.
 

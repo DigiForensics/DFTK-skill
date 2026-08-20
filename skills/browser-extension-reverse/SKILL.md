@@ -91,7 +91,7 @@ the `dftk` wheel. For plain web-page JS (not an extension), use `js-reverse`.
 
 ## Quality bar
 
-A defensible extension pass lists the permission surface and entry scripts, recovers
+A complete extension pass lists the permission surface and entry scripts, recovers
 the key data flows, preserves provenance, and separates fact from inference.
 
 ---

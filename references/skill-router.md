@@ -1,10 +1,13 @@
 # Skill Router — pick the right module
 
-DFTK-skill ships 29 progressive-disclosure sub-skills under `skills/`. Load the one that matches the task; if several apply, start from the umbrella (`reverse-engineering`, `digital-forensics`) and drill into the tool-specific module. Every module is read-only / evidence-preserving and ties back to the DFTK 3.3.0 audit ledger.
+DFTK-skill ships progressive-disclosure sub-skills under `skills/`. The generated
+[specialist skill catalog](skills.md) lists every available module. Choose the module
+that matches the task; when several apply, begin with an umbrella skill such as
+`reverse-engineering` or `digital-forensics`, then move to the specialist module.
 
-**Full engagement?** Start with `skills/case-orchestrator/` — it routes the goal to the right sub-skills below and runs them through the verified DFTK MCP loop, keeping every action in one CaseSession.
+**Multi-step engagement:** start with `skills/case-orchestrator/`. It routes the work to relevant sub-skills and keeps DFTK runs in one CaseSession.
 
-**What can DFTK actually do?** `capabilities.md` is the verified catalog of all 72 DFTK 3.3.0 capabilities (name, safety, params, external-tool requirements) — generated from the live registry. Use it to find the exact `name` for `dftk_describe` / `dftk_run` instead of guessing.
+`capabilities.md` lists all 79 DFTK 3.4.0 capabilities, including names, safety levels, parameters, and external-tool requirements. Use it to identify the exact name for `dftk_describe` or `dftk_run`.
 
 ## By task
 
@@ -26,6 +29,7 @@ DFTK-skill ships 29 progressive-disclosure sub-skills under `skills/`. Load the 
 | Reverse front-end JS / web bundles | `js-reverse/` |
 | Recover a binary/Protobuf protocol or PCAP | `protocol-reverse/` |
 | Analyze network captures (PCAP) | `pcap/` |
+| Investigate saved web configuration or access logs | `web-forensics/` |
 | General RE methodology / where to start | `reverse-engineering/` |
 
 ## By discipline
@@ -33,7 +37,7 @@ DFTK-skill ships 29 progressive-disclosure sub-skills under `skills/`. Load the 
 | Discipline | Modules |
 |---|---|
 | **Reverse engineering** | `reverse-engineering/`, `radare2/`, `ida-reverse/`, `ghidra-reverse/`, `dotnet-reverse/`, `go-rust-reverse/`, `macos-reverse/`, `browser-extension-reverse/`, `thick-client/`, `binary-diff/`, `reverse-exe/`, `apk-reverse/`, `apk/`, `mobile-reverse/`, `js-reverse/`, `protocol-reverse/`, `pcap/` |
-| **Digital forensics & IR** | `digital-forensics/`, `firmware-forensics/`, `server-forensics/` |
+| **Digital forensics & IR** | `digital-forensics/`, `firmware-forensics/`, `server-forensics/`, `web-forensics/` |
 | **Malware & detection** | `malware-analysis/`, `threat-hunting/` |
 | **Code & supply chain** | `code-audit/`, `supply-chain-security/` |
 | **Defensive security review** | `email-security/`, `identity-federation/`, `database-security/`, `ot-ics/` |
@@ -45,12 +49,13 @@ DFTK-skill ships 29 progressive-disclosure sub-skills under `skills/`. Load the 
 - **Suspicious app** → `apk/` or `mobile-reverse/` (static) → `apk-reverse/`/`mobile-reverse/` (dynamic) → `reverse-engineering/` for method.
 - **Unknown protocol** → `pcap/` (capture) → `protocol-reverse/` (recover structure).
 - **Source available** → `code-audit/` (first-party) + `supply-chain-security/` (dependencies/pipelines).
-- **Any local tooling run** → enable DFTK 3.3.0 `--audit` / `DFTK_AUDIT_LOG` so the pass is reproducible; `case-review/` for the evidence graph.
+- **Saved web root or access logs** → `web-forensics/` → `server-forensics/` only when live-host evidence is needed.
+- **Any local tooling run** → enable DFTK 3.4.0 `--audit` / `DFTK_AUDIT_LOG` so the pass is reproducible; `case-review/` for the evidence graph.
 
 ## MCP-first workflow
 
-When the host Agent exposes the `dftk_*` tools, prefer them over raw shell — the
-server enforces the safety / root / network policy. Typical sequence:
+When the host exposes `dftk_*` tools, use them for DFTK operations: the server
+enforces safety, root, and network policy. A typical sequence is:
 
 1. `dftk_doctor()` — confirm health + the policy you're bound by.
 2. `dftk_search_capabilities(query=…)` — find the right capability (Chinese aliases

@@ -22,7 +22,7 @@ A methodology skill for understanding how a compiled/obfuscated/packed/virtualiz
 
 - Default to a **local, isolated, authorized** context (CTF/crackme/training/own binary). Do not expand scope without evidence.
 - Prefer offline analysis; do not execute untrusted samples, mutate originals, or perform state-changing actions unless explicitly authorized on a copy.
-- Work on copies; record SHA-256 and reproducible commands. Enable the DFTK 3.3.0 audit ledger for process provenance.
+- Work on copies; record SHA-256 and reproducible commands. Enable the DFTK 3.4.0 audit ledger for process provenance.
 - Drive the task with the user's actual claim; present numbered next-step menus at the end of each phase.
 
 ## Problem-solving workflow
@@ -85,7 +85,7 @@ aaa; afl; pdf @ main # analyze / list / disassemble
 - (Reference-only, noted for depth): tools, tools-dynamic, tools-advanced, patterns(-ctf*), languages, languages-platforms, platforms, platforms-hardware, field-notes.
 
 ## Quality bar
-A good RE pass starts from strings/dynamic quick wins, maps control flow before acting, validates across decompilers, and answers the claim with a reproducible chain. It never fabricates an import table or asserts "benign" from absence of observed behavior.
+A complete RE pass starts from strings/dynamic quick wins, maps control flow before acting, validates across decompilers, and answers the claim with a reproducible chain. It never fabricates an import table or asserts "benign" from absence of observed behavior.
 
 ---
 

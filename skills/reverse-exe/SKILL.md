@@ -44,7 +44,7 @@ material; only the analytic technique is distilled here.
 ## When NOT to use
 
 - You have a live server to triage → use `server-forensics`.
-- You have local disk/image/archive artifacts → use `dftk` (68 read-only tools).
+- You have local disk/image/archive artifacts → use `dftk` (71 read-only tools).
 - You are asked to *detonate* the sample for behavior → only inside an isolated
   VM/sandbox; see `references/obfuscation-and-sandbox.md`. Never on the host.
 

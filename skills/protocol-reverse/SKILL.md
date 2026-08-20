@@ -21,7 +21,7 @@ Recover the structure of a custom or undocumented protocol from traffic captures
 
 - Work within an authorized scope; replay only against systems you are authorized to test.
 - Redact sensitive fields (credentials, tokens) in any shared output.
-- Record SHA-256 of the PCAP and reproducible decode commands; enable the DFTK 3.3.0 audit ledger.
+- Record SHA-256 of the PCAP and reproducible decode commands; enable the DFTK 3.4.0 audit ledger.
 
 ## When this skill applies
 
@@ -84,7 +84,7 @@ Recover the structure of a custom or undocumented protocol from traffic captures
 - related: `../reverse-exe/`, `../mobile-reverse/`, `../malware-analysis/` (C2), `../digital-forensics/` (traffic forensics)
 
 ## Quality bar
-A defensible protocol pass recovers a message layout or state machine (not just pasted hex), ships a reproducible decoder, respects scope, and redacts sensitive fields.
+A complete protocol pass recovers a message layout or state machine (not just pasted hex), ships a reproducible decoder, respects scope, and redacts sensitive fields.
 
 ---
 

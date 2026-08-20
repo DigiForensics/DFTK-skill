@@ -127,7 +127,7 @@ found_struct_offset -> comment(addr=insn_va, "{struct_name}.{member_name}")
 
 ## Quality bar
 
-A defensible migration uses reliable anchors, spot-checks key symbols, caches
+A complete migration uses reliable anchors, spot-checks key symbols, caches
 intermediate results, and records every applied rename in the audit ledger.
 
 ---

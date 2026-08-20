@@ -20,9 +20,22 @@ This skill teaches an Agent how to investigate a **live Linux server** (typicall
 
 It is a **methodology skill**, not a parser. It holds no forensic engine. The executable capabilities are the server's own CLI tools (`blkid`, `ss`, `ps`, `mysql`, `docker`, `openssl`, `sha256sum`, `grep`, …). The value of the skill is the reasoning discipline: decide what must be proven, pick the smallest read-only command that proves it, keep provenance, and stop when the claim is satisfied.
 
+## DFTK remote snapshot
+
+For an authorized live Linux target, begin with DFTK's `server.remote_snapshot`
+instead of an arbitrary SSH shell command. It allows only fixed read-only profiles:
+`baseline`, `incident`, `containers`, and `web`. The incident profile records the
+host-key fingerprint, sessions, processes, listeners, routes, systemd/timers,
+cron/persistence paths, bounded auth-log output, and container metadata. Enable MCP
+network access only when authorized and preserve the Observation in the Case.
+
+```text
+dftk_run(name="server.remote_snapshot", params={"host":"host.example", "username":"analyst", "profile":"incident"})
+```
+
 ## Relationship to DFTK
 
-- When the evidence is a **local file or disk image** (APK, PCAP, SQLite, registry, E01, browser export), prefer the `dftk` skill and its 68 read-only tools — they give structured Observation/Evidence output and server-enforced safety.
+- For a **local file or disk image** (APK, PCAP, SQLite, registry, E01, browser export), use the `dftk` skill and DFTK's read-only tools. They return structured Observation/Evidence results and can run under MCP server policy.
 - When the evidence is a **running server** whose answers live in config files, live databases, process/port state, or encrypted archives, use this skill.
 - The two share the same reasoning contract: claim → evidence requirement → capability → bounded execution → evaluation → verification → answer. The verification levels (VERIFIED / SUPPORTED / CANDIDATE / UNRESOLVED / UNSUPPORTED) and the claim-card format from `templates/` are reused here.
 
@@ -107,7 +120,7 @@ value      : the exact finding
 method/hash: command used, or SHA-256 of the artifact
 ```
 
-A strong finding is traceable to a source. Do not invent a path, hash, row, or command output that you did not actually observe.
+Each finding should be traceable to a source. Do not invent a path, hash, row, or command output that you did not actually observe.
 
 ## 8. Correlation needs a real join key
 
@@ -175,4 +188,4 @@ Use progressive disclosure.
 
 ## 14. The quality bar
 
-A good server-forensics pass answers the exact claim with the smallest defensible evidence chain, preserves provenance, distinguishes fact from inference and limitation, avoids unsupported negatives, stops when sufficient, and leaves results reproducible for another examiner.
+The report should answer the exact claim with the smallest sufficient evidence chain, preserve provenance, distinguish fact from inference and limitation, avoid unsupported negatives, and leave results reproducible for another examiner.

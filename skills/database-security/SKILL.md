@@ -77,7 +77,7 @@ Observation/Evidence output.
 
 ## Quality bar
 
-A defensible database-security pass avoids unauthorized writes/deletes, separates
+A complete database-security pass avoids unauthorized writes/deletes, separates
 misconfiguration from an exploitable chain, records provenance, and ends with prioritized
 hardening — not an escalation recipe.
 

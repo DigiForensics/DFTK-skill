@@ -103,7 +103,7 @@ Default: read-only identification, traffic mirroring, offline firmware/config an
 
 ## Quality bar
 
-A defensible OT pass defaults to passive/read-only, records the authorized boundary, avoids
+A complete OT pass defaults to passive/read-only, records the authorized boundary, avoids
 writing to control loops, states physical/process impact per finding, and leaves a
 reproducible, safety-aware report.
 

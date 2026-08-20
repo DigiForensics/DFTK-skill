@@ -23,7 +23,7 @@ White-box security review of source code you are authorized to assess. Combines 
 
 - Confirm you have authorized access to the source/repo and the review scope (directory / service / PR diff).
 - Never widen scope beyond what was authorized.
-- Record findings with reproducible evidence; enable the DFTK 3.3.0 audit ledger for any local tooling runs.
+- Record findings with reproducible evidence; enable the DFTK 3.4.0 audit ledger for any local tooling runs.
 
 ## When this skill applies
 
@@ -74,7 +74,7 @@ Optional: ATT&CK / CWE id.
 - related: `../supply-chain-security/`, `../reverse-exe/` (when only a binary is available)
 
 ## Quality bar
-A defensible audit verifies findings manually (not just scanner output), includes remediation, stays within authorized scope, and states confidence per finding.
+A complete audit verifies findings manually (not just scanner output), includes remediation, stays within authorized scope, and states confidence per finding.
 
 ---
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.4.0 — DFTK-first Agent bootstrap (2026-08-21)
+
+- Made DFTK the only recommended Agent entry point. `dftk agent setup` now installs
+  this version-matched bundle, prepares a separate case workspace, and emits a
+  reviewable MCP configuration fragment without replacing host configuration.
+- Updated the root Skill and MCP guidance for guided intake, case briefs,
+  deterministic next actions, entity correlation, remote read-only collection, EVTX,
+  YARA, and web-shell analysis.
+
 ## 3.3.0 — Align with DFTK 3.3.0 (2026-08-16)
 
 - Documented DFTK's chain-of-custody audit ledger: `references/direct-cli.md` gains a section on `--audit` / `DFTK_AUDIT_LOG`, and SKILL.md §13 points to it for examinations that need a defensible record of what was executed. Requires DFTK 3.3.0 or later, which provides the ledger; the guidance is inert on older releases.

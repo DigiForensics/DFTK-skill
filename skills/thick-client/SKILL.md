@@ -96,7 +96,7 @@ the `dftk` wheel.
 
 ## Quality bar
 
-A defensible thick-client review draws the trust boundary, covers both local and
+A complete thick-client review draws the trust boundary, covers both local and
 network surfaces, preserves provenance, and separates fact from inference — ending
 in findings an engineer can act on, not a bypass recipe for someone else's software.
 

@@ -3,13 +3,14 @@
 Use this when DFTK is installed alongside a shipped forensic-toolkit zip (IDA /
 Ghidra / jadx / apktool / tshark / …) and the tools must be usable by `dftk`.
 
-## The problem this solves
+## When preparation is needed
 
-External binaries must be resolvable for `dftk_run` to stop returning
-`unsupported`. If the toolkit is extracted somewhere the agent sandbox cannot
-read, or onto a drive that is not on PATH, the tools are silently unusable.
+External binaries must be resolvable before `dftk_run` can use them. If the toolkit
+location is not on `PATH` or otherwise configured, the related capability returns
+`unsupported`.
 
-`dftk prepare` fixes this without manual PATH edits and without admin rights.
+`dftk prepare` records the location without manual `PATH` edits or administrator
+rights.
 
 ## Steps for the recipient
 
@@ -38,8 +39,7 @@ change, no per-session setup needed for `dftk run` itself.
 ## What `dftk prepare` does
 
 - Writes `~/.dftk/toolchain.json` recording `toolkit_root` and `bin_dir`. This
-  file lives under the user home, so the agent can always read it even when the
-  toolkit is on an exotic / non-PATH drive.
+  file records the configured tool location.
 - Generates `bin_dir` launchers: `<tool>.bat` (Windows terminals) and an
   extensionless `<tool>` wrapper (agent Bash).
 - Writes `set_path.bat` / `set_path.sh` so bare tool names also work in a plain

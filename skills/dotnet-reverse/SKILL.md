@@ -154,7 +154,7 @@ syntax); IL editing almost never distorts. See `references/common-workflow.md`.
 
 ## Quality bar
 
-A defensible .NET pass confirms managed identity (or routes out), deobfuscates
+A complete .NET pass confirms managed identity (or routes out), deobfuscates
 packed samples before deep analysis, verifies key logic in the IL view (not just
 C#), and keeps the original + cleaned + patched artifacts reproducible.
 

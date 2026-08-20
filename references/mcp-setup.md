@@ -1,19 +1,37 @@
 # DFTK MCP server setup
 
-DFTK ships a native local MCP server (`dftk.mcp_server`). It exposes the forensic
-toolkit to any MCP-compatible client over **stdio** as a server named `DFTK`. The
-server owns the safety / network / root / timeout policy, so the client cannot weaken
-it by editing shell text. This is why the Skill says *prefer DFTK MCP*.
+DFTK includes a local MCP server (`dftk.mcp_server`) named `DFTK`. It exposes the
+toolkit to MCP-compatible clients over **stdio**. The server applies its own safety,
+network, root, and timeout policy; clients cannot change that policy through tool
+arguments.
 
-The server is **client-agnostic**: it works with Claude Desktop, Cursor, WorkBuddy,
-or any other MCP host that can launch a stdio server — no client-specific code is
-required. The only integration step any host needs is a stdio launch entry pointing
-at `dftk mcp --root <evidence_dir>`.
+Any host that can launch a stdio MCP server can use it. Configure a launch entry for
+`dftk mcp --root <evidence_dir>`.
+
+## 0. Recommended Agent bootstrap
+
+Start from the primary DFTK repository, not from a copied Skill directory. After
+installing `dftk[mcp]`, an Agent can prepare its own bounded integration in one
+reviewable command:
+
+```bash
+dftk agent setup \
+  --root /abs/path/to/evidence \
+  --workspace /abs/path/to/case-workspace \
+  --install-skill \
+  --config-out /abs/path/to/case-workspace/dftk-agent-config.json
+```
+
+The command installs the DFTK-skill release matching the installed runtime and emits
+two importable fragments: portable JSON (`mcp_json`) and Codex TOML (`codex_toml`).
+It intentionally does **not** modify a host's global MCP configuration; import the
+fragment using the host's normal UI/configuration workflow and approve the server.
+Use `--dry-run` first when the Agent must show its intended destinations and policy.
 
 ## 1. Install
 
 ```bash
-pip install "dftk[mcp]"   # pulls mcp==2.0.0 (validated with 2.0.0)
+pip install "dftk[mcp]"   # installs a supported mcp release (>=2.0.0,<3)
 dftk doctor                # verify the MCP dependency + which external tools exist
 ```
 
@@ -25,10 +43,10 @@ pure discovery, no execution.
 
 ```bash
 dftk mcp --root /abs/path/to/evidence \
-         --workspace .dftk \
+         --workspace /abs/path/to/case-workspace \
          --max-safety READ_ONLY \
          --timeout 180 \
-         --audit                 # optional: chain-of-custody ledger -> .dftk/audit.jsonl
+         --audit                 # optional: chain-of-custody ledger -> <workspace>/audit.jsonl
 # add --allow-network to opt into capabilities that declare network access
 ```
 
@@ -37,29 +55,30 @@ Flags:
 | Flag | Default | Meaning |
 |------|---------|---------|
 | `--root DIR` | `.` | Filesystem evidence root the server confines every path parameter to. Path escapes are rejected. |
-| `--workspace DIR` | `.dftk` | DFTK case workspace; **must live inside `--root`**. Cases persist Observations here. |
+| `--workspace DIR` | `$DFTK_WORKSPACE` or `~/.dftk` | Writable DFTK case workspace. It must be **outside `--root`** by default, so derived data never changes acquired evidence. |
+| `--allow-workspace-in-root` | off | Explicit exception for legacy workflows that intentionally store derived data in the evidence root. |
 | `--max-safety` | `READ_ONLY` | Capability safety ceiling: `READ_ONLY` or `STATEFUL`. |
 | `--allow-network` | off | Opt-in for capabilities that declare network access. |
 | `--timeout` | `180` | Hard timeout (seconds) for one capability run. |
-| `--audit [PATH]` | off | Append every run to a JSONL chain-of-custody ledger (default `.dftk/audit.jsonl`). |
+| `--audit [PATH]` | off | Append every run to a JSONL chain-of-custody ledger (default `<workspace>/audit.jsonl`). |
 
-## Verify it starts (before you trust it in your host)
+## Verify the server
 
-The server is **stdio**: no port, no URL — your MCP host launches it as a child
-process and talks JSON-RPC over stdin/stdout. Confirm it boots and stays alive
-*before* adding it to `mcp.json`:
+The server has no port or URL. An MCP host launches it as a child process and uses
+JSON-RPC over stdin/stdout. Confirm that it starts and remains running before adding
+it to your MCP configuration:
 
 ```bash
 # 1) dependency + policy sanity (no server needed)
-dftk doctor
+dftk mcp --root /abs/path/to/evidence --workspace /abs/path/to/case-workspace --check
 
 # 2) boot in a terminal; it should print nothing and wait on stdin. Ctrl-C to stop.
-dftk mcp --root /abs/path/to/evidence --max-safety READ_ONLY
+dftk mcp --root /abs/path/to/evidence --workspace /abs/path/to/case-workspace --max-safety READ_ONLY
 ```
 
-If `dftk mcp` prints a traceback or exits immediately, fix the cause (see
-Troubleshooting) before trusting it. Once it stays running, go to §5 and click
-**Trust** — the six `dftk_*` tools then appear in this Skill's MCP mode.
+If `dftk mcp` prints a traceback or exits immediately, resolve the cause in the
+troubleshooting table. Then configure the host and enable the server according to the
+host's normal approval flow.
 
 ## 3. Tools exposed (server name: `DFTK`)
 
@@ -69,10 +88,10 @@ Troubleshooting) before trusting it. Once it stays running, go to §5 and click
 | `dftk_search_capabilities` | `(query="", tags=None, produces=None, limit=12)` | Discover capabilities by evidence intent, tags, or produced-evidence type. Supports Chinese aliases (联系人, 短信, 通话, 流量, 注册表, 浏览器, 时间, 哈希, 邮件, …). |
 | `dftk_describe` | `(name)` | Exact parameter / safety / dependency / tag / produced-evidence contract for one capability. |
 | `dftk_run` | `(name, params=None, case_id=None)` | Execute one capability under server policy; optionally persist it in an existing case. |
-| `dftk_case` | `(action, case_id=None, name=None, format="json")` | Manage the CaseSession: `new`, `list`, `show`, `timeline`, `export`. |
+| `dftk_case` | `(action, case_id=None, name=None, format="json", path=None, objective=None, max_steps=2)` | Manage the CaseSession: `new`, `list`, `show`, `guided_intake`, `brief`, `next`, `timeline`, `graph`, `export`. `guided_intake` persists intake plus selected child runs; `brief` is a bounded recovery/handoff checkpoint; `next` returns an action queue; `graph` correlates source-linked entities. |
 | `dftk_read_case_run` | `(case_id, seq, evidence_offset=0, evidence_limit=20, fact_path="", value_offset=0, value_limit=50)` | Page one already-persisted Observation **without rerunning** the capability. |
 
-## 4. Server-owned policy (why MCP is preferred)
+## 4. Server policy
 
 - **Evidence-root confinement** — every path-like parameter is validated to stay
   inside `--root`; escape attempts return an error, never a silent allow.
@@ -80,14 +99,17 @@ Troubleshooting) before trusting it. Once it stays running, go to §5 and click
   as `blocked`, not executed.
 - **Network gating** — network-declaring capabilities are blocked unless
   `--allow-network` was set at launch.
-- **Output bounding** — results larger than 512 KB come back as a truncated preview
-  plus a `guidance` string; page the full persisted Observation via
+- **Remote collection** — `server.remote_snapshot` accepts only fixed read-only
+  SSH collection profiles; it has no arbitrary command parameter. Unknown SSH host
+  keys are rejected and must be verified in the local `known_hosts` store first.
+- **Output bounding** — results larger than 512 KB return a truncated preview and a
+  `guidance` field; page the full persisted Observation with
   `dftk_read_case_run`.
 - **Destructive always off** — `destructive_allowed` is `False` and not configurable.
-- **Determinism** — runs are serialized under a lock so concurrent Agent calls stay
-  deterministic and the case manifest sequence is protected.
+- **Serialized runs** — a lock protects the case-manifest sequence during concurrent
+  requests.
 
-## 5. Connect to your MCP host (WorkBuddy shown as one example)
+## 5. Connect an MCP host
 
 Merge the server into your host's MCP config (WorkBuddy example: `~/.workbuddy/mcp.json`, add to the `mcpServers` object):
 
@@ -96,15 +118,14 @@ Merge the server into your host's MCP config (WorkBuddy example: `~/.workbuddy/m
   "mcpServers": {
     "dftk": {
       "command": "dftk",
-      "args": ["mcp", "--root", "/abs/path/to/evidence", "--max-safety", "READ_ONLY"]
+      "args": ["mcp", "--root", "/abs/path/to/evidence", "--workspace", "/abs/path/to/case-workspace", "--max-safety", "READ_ONLY"]
     }
   }
 }
 ```
 
-Then open the connector management page, find the `dftk` server, and click
-**Trust** to enable it. After that the six `dftk_*` tools appear in this Skill's
-MCP mode automatically — no shell text needed.
+Enable the `dftk` server in the host's connector settings. The six `dftk_*` tools
+will then be available to the host.
 
 > `dftk` must be installed (`pip install "dftk[mcp]"`) and on `PATH`. If your
 > interpreter is a venv, point `command` at its `python` and use
@@ -112,22 +133,22 @@ MCP mode automatically — no shell text needed.
 
 ## 6. MCP vs CLI
 
-Use MCP when the host Agent exposes the tools — policy is server-enforced. Fall back
-to the CLI (`direct-cli.md`) only when MCP is unavailable; there,
-safety/root scope are **not** enforced by a server and must be respected manually.
+Use MCP when the host exposes the tools; the server enforces its policy. When MCP is
+unavailable, use the CLI (`direct-cli.md`) and apply the same safety and root scope
+yourself.
 
 ## 7. Troubleshooting
 
 | Symptom | Cause | Fix |
 |---------|-------|-----|
 | `command not found: dftk` after install | not on `PATH` / wrong interpreter | use the venv form `python -m dftk.cli mcp …`, or `pip install` into the active interpreter |
-| Server exits instantly / traceback on boot | `mcp` extra missing | `pip install "dftk[mcp]"` (needs `mcp==2.0.0`); re-run `dftk doctor` |
+| Server exits instantly / traceback on boot | `mcp` extra missing or workspace policy failure | `pip install "dftk[mcp]"`; run `dftk mcp --root <evidence> --workspace <case-dir> --check` |
 | Capability returns `blocked` | safety exceeds `--max-safety` | raise the ceiling to `STATEFUL` only if authorized, or pick a `READ_ONLY` capability |
 | Network capability blocked | `--allow-network` not set | relaunch with `--allow-network` (authorized use only) |
 | Param rejected / "outside evidence root" | path escapes `--root` | pass a path inside `--root`; escapes are denied, never silently allowed |
-| `--workspace` error | workspace not inside `--root` | keep `.dftk` under the evidence root |
+| `--workspace` error | workspace is inside `--root` | use a separate writable case directory; only use `--allow-workspace-in-root` for an intentional legacy exception |
 | Result truncated at 512 KB | output bounding | re-read the persisted Observation via `dftk_read_case_run` |
-| `dftk_*` tools don't appear | server not **Trusted** | open the connector page, find `dftk`, click **Trust**; restart the session if needed |
+| `dftk_*` tools don't appear | server is disabled or unapproved | enable/approve `dftk` in the host settings; restart the session if needed |
 
 ## 8. Typical agent flow (worked example)
 
@@ -192,9 +213,9 @@ Re-running to fix a failed call is safe: correcting params produces a **new** `s
 inside the same case; the failed `seq` stays on the audit trail. Never declare a
 finding from a run whose top-level `ok` is `false`.
 
-## 9. Verified contract notes (from a live `dftk` 3.3.0 stdio handshake)
+## 9. Verified contract notes (from a live `dftk` 3.4.0 stdio handshake)
 
-These two rules are easy to get wrong and were confirmed by a real MCP client session:
+The following interface details were checked with an MCP client session:
 
 - **`dftk_describe(name=…)` takes a DFTK *capability* name**, i.e. a value returned by
   `dftk_search_capabilities` such as `android.apk_endpoints` or `binary.pe_inventory`.
@@ -227,6 +248,6 @@ dftk_case(action="timeline", case_id="case-20260816T034157Z-ea679b")   # generat
 dftk_case(action="export",   case_id="case-20260816T034157Z-ea679b", format="md")
 ```
 
-The `dftk` server is wired into the host MCP config (WorkBuddy example: `~/.workbuddy/mcp.json`), stdio, root `/path/to/evidence`
-(`READ_ONLY`). After installing `dftk[mcp]`, open the connector page, **Trust** the `dftk`
-server, and the six tools become available to the agent.
+The example server uses stdio with root `/path/to/evidence` and the `READ_ONLY`
+ceiling. After installing `dftk[mcp]`, add the server to the MCP host configuration
+and enable it through that host's normal settings.

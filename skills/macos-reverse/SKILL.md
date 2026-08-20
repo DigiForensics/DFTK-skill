@@ -93,7 +93,7 @@ linked dylibs / rpath.
 
 ## Quality bar
 
-A defensible macOS pass records signing / Hardened Runtime status, produces
+A complete macOS pass records signing / Hardened Runtime status, produces
 address-level or symbol-level conclusions, and preserves provenance for every
 finding.
 

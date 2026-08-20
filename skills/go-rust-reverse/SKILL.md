@@ -99,7 +99,7 @@ Rust markers: `rust_begin_unwind`, `panic`, crate paths (`/rustc/...`),
 
 ## Quality bar
 
-A defensible Go/Rust pass recovers key function names (or an equivalent mapping),
+A complete Go/Rust pass recovers key function names (or an equivalent mapping),
 labels the language-runtime evidence, records provenance, and leaves reproducible
 steps.
 
