@@ -5,7 +5,7 @@ A structured pass for white-box source review. Automated scanners produce *candi
 ## 0. Setup
 
 - Confirm authorized access to the repo and the review scope (path / service / PR diff).
-- Enable the DFTK 3.3.0 audit ledger for any local scans so commands + results are reproducible.
+- Enable the DFTK 3.4.0 audit ledger for any local scans so commands + results are reproducible.
 - Pick the right scanner per language: Semgrep (multi), CodeQL (deep data-flow), Bandit (Py), gosec/staticcheck (Go), SpotBugs+FindSecBugs (Java).
 
 ## 1. Triage every scanner hit

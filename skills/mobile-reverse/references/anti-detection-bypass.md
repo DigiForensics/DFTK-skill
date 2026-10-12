@@ -33,4 +33,4 @@ objection -g "com.target.app" explore
 
 ## Quality bar
 
-A defensible review enumerates each control, explains its mechanism, validates (in a lab) whether it actually fires, rates its strength, and captures redacted evidence. It does not ship bypass tooling as a result; it reports the residual risk. Enable the DFTK 3.3.0 audit ledger for any local instrumentation so the session is reproducible.
+A defensible review enumerates each control, explains its mechanism, validates (in a lab) whether it actually fires, rates its strength, and captures redacted evidence. It does not ship bypass tooling as a result; it reports the residual risk. Enable the DFTK 3.4.0 audit ledger for any local instrumentation so the session is reproducible.

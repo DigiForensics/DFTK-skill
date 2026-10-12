@@ -10,7 +10,7 @@ description: >-
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
 author: DyNooob @ DigiForensics
-version: 1.0.0
+version: 3.6.0
 tags:
   - forensics
   - dfir
@@ -108,3 +108,8 @@ unpacks `.ccb` secondary dex via a native `decrypt` in a custom `.so`, talks to
 a backend over HTTP POST with a `sign` param). All question numbers and answer
 values were stripped; only method remains. Keep exams' questions/answers with
 the examination material.
+
+
+## DFTK 3.6 evidence anchors
+
+Use `android.apk_manifest`, `android.apk_endpoints`, `binary.elf_dynamic` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Treat embedded strings as leads; verify executable use before claiming an endpoint was contacted.

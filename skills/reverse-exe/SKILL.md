@@ -9,7 +9,7 @@ description: >-
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
 author: DyNooob @ DigiForensics
-version: 1.0.0
+version: 3.6.0
 tags:
   - forensics
   - dfir
@@ -44,7 +44,7 @@ material; only the analytic technique is distilled here.
 ## When NOT to use
 
 - You have a live server to triage → use `server-forensics`.
-- You have local disk/image/archive artifacts → use `dftk` (68 read-only tools).
+- You have local disk/image/archive artifacts → use `dftk` (71 read-only tools).
 - You are asked to *detonate* the sample for behavior → only inside an isolated
   VM/sandbox; see `references/obfuscation-and-sandbox.md`. Never on the host.
 
@@ -137,3 +137,8 @@ This skill was distilled from a real malicious-program analysis. All exam
 question numbers and answer values were stripped; only the method remains. If
 you are preparing an examination, keep the questions and correct answers with
 the examination material — never paste them into a shared skill.
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.pe_imports`, `binary.pe_resources`, `binary.pe_signing` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Imports and resources describe structure; signature metadata is not a cryptographic trust verdict.

@@ -6,7 +6,7 @@ description: >-
   and vulnerability reachability. Defensive, evidence-preserving. Use for open-source
   dependency review, third-party component compliance, container hardening, and
   pipeline security gating. Regulation-aware (SBOM mandates, EU CRA).
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -153,9 +153,14 @@ Risk matrix:
 
 ## Quality bar
 
-A defensible supply-chain assessment produces an SBOM, separates reachable from
+A complete supply-chain assessment produces an SBOM, separates reachable from
 unreachable findings, reviews the pipeline's own security, and ends with prioritized
 remediation — all with reproducible scan commands recorded.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `archive.inventory`, `binary.compare`, `binary.pe_signing` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Correlate artifact/version hashes and signature context; byte comparison cannot establish supply-chain provenance by itself.

@@ -1,7 +1,7 @@
 ---
 name: mobile-reverse
 description: Authorized Android and iOS application reverse engineering and security analysis — APK/IPA inspection, runtime instrumentation, SSL pinning and root/jailbreak detection review, and mobile crypto extraction. Use for lawful analysis and security testing of mobile apps you are authorized to examine.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -126,7 +126,12 @@ A=Android, I=iOS
 - protection bypass review → `references/anti-detection-bypass.md`
 
 ## Quality bar
-A defensible mobile pass records the app hash, assesses static structure, reviews protection mechanisms (not just bypasses them), extracts/characterizes crypto where authorized, and redacts secrets. It respects scope and device authorization.
+A complete mobile pass records the app hash, assesses static structure, reviews protection mechanisms (not just bypasses them), extracts/characterizes crypto where authorized, and redacts secrets. It respects scope and device authorization.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `android.appdata_inventory`, `database.sqlite_recover`, `browser.firefox_cookies` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Respect acquisition/profile boundaries and WAL coverage; recovered data does not automatically establish user attribution.

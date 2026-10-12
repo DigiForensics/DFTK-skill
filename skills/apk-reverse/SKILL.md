@@ -6,7 +6,7 @@ description: >-
   triage. Read-only-first; modification only for apps you own or are authorized to
   assess. Pairs with the read-only `apk` module (static forensic entry-point /
   native-secret triage) and with `ida-reverse` / `radare2` for the .so layer.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -142,9 +142,14 @@ State at minimum:
 
 ## Quality bar
 
-A defensible APK pass preserves provenance, separates fact from inference,
+A complete APK pass preserves provenance, separates fact from inference,
 keeps the original immutable, and — for any dynamic step — confirms authorized
 scope before executing.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `android.apk_signing_inventory`, `android.dex_strings`, `binary.native_indicator_scan` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Use DEX/string offsets to select decompiler targets; static evidence does not establish runtime execution.

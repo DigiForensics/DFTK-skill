@@ -7,7 +7,7 @@ description: >-
   for CLI reverse engineering, rabin2/rasm2/radiff2/rahash2/rax2 usage, and r2
   scripting. Route to ida-reverse for decompiler / pseudocode work, or to
   reverse-exe / malware-analysis for static malware triage.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -210,9 +210,14 @@ Step 3 is not an optional optimization — it is the gate before deep analysis.
 
 ## Quality bar
 
-A defensible radare2 pass records the import table as evidence, separates fact
+A complete radare2 pass records the import table as evidence, separates fact
 from inference, preserves provenance, and leaves a reproducible command trail
 that another analyst can re-run.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.pe_exports`, `binary.elf_dynamic`, `binary.macho_inventory` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Native tables provide starting addresses and symbols; external disassembly must retain the source hash and architecture slice.

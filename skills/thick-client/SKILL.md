@@ -6,7 +6,7 @@ description: >-
   evidence-preserving. Use for reviewing an app you own or are authorized to assess
   (C/S clients, Electron/Qt/.NET WinForms/WPF), focusing on where client-side
   enforcement and secrets live rather than bypassing third-party controls.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -96,9 +96,14 @@ the `dftk` wheel.
 
 ## Quality bar
 
-A defensible thick-client review draws the trust boundary, covers both local and
+A complete thick-client review draws the trust boundary, covers both local and
 network surfaces, preserves provenance, and separates fact from inference — ending
 in findings an engineer can act on, not a bypass recipe for someone else's software.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.pe_imports`, `binary.macho_inventory`, `database.sqlite_forensic_inventory` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Separate executable structure, local data and remote traffic; none alone proves a sensitive operation completed.

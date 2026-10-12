@@ -6,7 +6,7 @@ description: >-
   script injection, and extension-based credential / traffic logic recovery.
   Read-only-first, evidence-preserving. Use for authorized analysis, malicious-extension
   IOC extraction, and supply-chain extension-poisoning investigation.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -91,8 +91,13 @@ the `dftk` wheel. For plain web-page JS (not an extension), use `js-reverse`.
 
 ## Quality bar
 
-A defensible extension pass lists the permission surface and entry scripts, recovers
+A complete extension pass lists the permission surface and entry scripts, recovers
 the key data flows, preserves provenance, and separates fact from inference.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `archive.inventory`, `file.search_tree`, `browser.chromium_bookmarks` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Treat package configuration and acquired profile artifacts as separate sources; profile presence does not prove extension execution.

@@ -2,7 +2,7 @@
 
 A realistic transcript of the orchestrator loop. Tool names, argument shapes, the
 case-id format, and every `dftk_search_capabilities` result below were confirmed
-against a live `dftk mcp` stdio session (3.3.0). `<…>` are analyst-supplied values.
+against a live `dftk mcp` stdio session (3.4.0). `<…>` are analyst-supplied values.
 
 ## Step 1 — open the case
 

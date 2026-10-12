@@ -1,7 +1,7 @@
 ---
 name: reverse-engineering
 description: General reverse engineering methodology for compiled, obfuscated, packed, or virtualized targets — binaries, APKs, WASM, firmware, custom VMs, bytecode, and anti-analysis logic. Use when the real blocker is understanding how a target works (not exploiting it). Read-only analysis; pivot to specialized sub-skills for deeper work.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -22,7 +22,7 @@ A methodology skill for understanding how a compiled/obfuscated/packed/virtualiz
 
 - Default to a **local, isolated, authorized** context (CTF/crackme/training/own binary). Do not expand scope without evidence.
 - Prefer offline analysis; do not execute untrusted samples, mutate originals, or perform state-changing actions unless explicitly authorized on a copy.
-- Work on copies; record SHA-256 and reproducible commands. Enable the DFTK 3.3.0 audit ledger for process provenance.
+- Work on copies; record SHA-256 and reproducible commands. Enable the DFTK 3.4.0 audit ledger for process provenance.
 - Drive the task with the user's actual claim; present numbered next-step menus at the end of each phase.
 
 ## Problem-solving workflow
@@ -85,7 +85,12 @@ aaa; afl; pdf @ main # analyze / list / disassemble
 - (Reference-only, noted for depth): tools, tools-dynamic, tools-advanced, patterns(-ctf*), languages, languages-platforms, platforms, platforms-hardware, field-notes.
 
 ## Quality bar
-A good RE pass starts from strings/dynamic quick wins, maps control flow before acting, validates across decompilers, and answers the claim with a reproducible chain. It never fabricates an import table or asserts "benign" from absence of observed behavior.
+A complete RE pass starts from strings/dynamic quick wins, maps control flow before acting, validates across decompilers, and answers the claim with a reproducible chain. It never fabricates an import table or asserts "benign" from absence of observed behavior.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.pe_headers`, `binary.elf_dynamic`, `binary.macho_inventory`, `binary.compare` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Choose format-native structure before broad string heuristics, and use differences as hypotheses for deeper reverse analysis.

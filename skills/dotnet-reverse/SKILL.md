@@ -7,7 +7,7 @@ description: >-
   .dll, ConfuserEx / SmartAssembly / Babel / Eazfuscator / .NET Reactor, and for
   authorized analysis of .NET malware loaders or red-team tooling. Not for native
   binaries (use reverse-exe / ida-reverse).
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -154,9 +154,14 @@ syntax); IL editing almost never distorts. See `references/common-workflow.md`.
 
 ## Quality bar
 
-A defensible .NET pass confirms managed identity (or routes out), deobfuscates
+A complete .NET pass confirms managed identity (or routes out), deobfuscates
 packed samples before deep analysis, verifies key logic in the IL view (not just
 C#), and keeps the original + cleaned + patched artifacts reproducible.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.pe_headers`, `binary.pe_imports`, `binary.compare` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. DFTK provides PE structure and byte comparison; IL decompilation requires a separate authorized specialist tool.

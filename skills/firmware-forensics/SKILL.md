@@ -8,7 +8,7 @@ description: >-
   isolated lab, and findings go through responsible disclosure — never weaponization.
   Pairs with reverse-exe / ida-reverse / radare2 for extracted binaries and with
   binary-diff for cross-version symbol migration.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -173,10 +173,15 @@ When a suspected flaw is found:
 
 ## Quality bar
 
-A defensible firmware-forensics pass hashes every artifact, extracts and analyzes the
+A complete firmware-forensics pass hashes every artifact, extracts and analyzes the
 filesystem, preserves provenance, and — if a flaw is found — validates it in an
 isolated lab and routes it to responsible disclosure rather than exploitation.
 
 ---
 
 licensed. Re-cast from offensive pentest to defensive firmware forensics. The original
+
+
+## DFTK 3.6 evidence anchors
+
+Use `archive.inventory`, `crypto.entropy_profile`, `binary.elf_dynamic` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Use container boundaries and ELF dependencies to select further analysis; entropy alone does not establish encryption or malware.

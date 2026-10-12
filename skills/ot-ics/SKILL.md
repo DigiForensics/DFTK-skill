@@ -6,7 +6,7 @@ description: >-
   physical harm is possible from mistakes, so written authorization and a passive-first
   stance are mandatory. Use for reviewing an OT environment you own or are authorized to
   assess.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -103,9 +103,14 @@ Default: read-only identification, traffic mirroring, offline firmware/config an
 
 ## Quality bar
 
-A defensible OT pass defaults to passive/read-only, records the authorized boundary, avoids
+A complete OT pass defaults to passive/read-only, records the authorized boundary, avoids
 writing to control loops, states physical/process impact per finding, and leaves a
 reproducible, safety-aware report.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `network.flows`, `network.tcp_reassemble`, `binary.elf_dynamic` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Preserve packet/stream offsets and gaps; generic reassembly does not establish an industrial command was accepted.

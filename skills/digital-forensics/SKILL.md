@@ -1,7 +1,7 @@
 ---
 name: digital-forensics
-description: Authorized digital forensics and incident-response triage — memory dumps, disk/E01 timelines, PCAP溯源, host artifacts, and evidence preservation. Use for lawful investigations that require chain-of-custody, Volatility/Plaso timelines, Windows host artifacts, or IR evidence handling. Pairs with DFTK for local file/artifact parsing and with the DFTK 3.3.0 audit ledger for process provenance.
-version: 1.0.0
+description: Authorized digital forensics and incident-response triage — memory dumps, disk/E01 timelines, PCAP溯源, host artifacts, and evidence preservation. Use for lawful investigations that require chain-of-custody, Volatility/Plaso timelines, Windows host artifacts, or IR evidence handling. Pairs with DFTK for local file/artifact parsing and with the DFTK 3.4.0 audit ledger for process provenance.
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -23,7 +23,7 @@ It is a **methodology skill**, not a parser. The executing capabilities are exte
 
 ## Relationship to DFTK
 
-- When the evidence is a **local file or disk image artifact** (APK, PCAP, SQLite, registry, E01, browser export), prefer `dftk` — its 68+ read-only tools give structured Observation/Evidence output with server-enforced safety.
+- For a **local file or disk image artifact** (APK, PCAP, SQLite, registry, E01, browser export), use `dftk`. Its 71 read-only tools return structured Observation/Evidence results and can run under MCP server policy.
 - When the task is **memory/disk timeline, host-artifact reconstruction, or IR preservation**, use this skill.
 - Both share the same reasoning contract: claim → evidence requirement → capability → bounded execution → verification. When you run any command here, enable DFTK's audit ledger (`--audit <path>` or `DFTK_AUDIT_LOG`) so the *process* is recorded with evidence hashes — this is the chain-of-custody record.
 
@@ -106,7 +106,12 @@ Export suspicious streams to `protocol-reverse/` for frame/state-machine recover
 
 ## 8. Quality bar
 
-A defensible DFIR pass answers the claim with the smallest reproducible evidence chain, preserves provenance and chain of custody, distinguishes fact from inference, redacts by sensitivity, and leaves results re-examinable by another analyst.
+A complete DFIR pass answers the claim with the smallest reproducible evidence chain, preserves provenance and chain of custody, distinguishes fact from inference, redacts by sensitivity, and leaves results re-examinable by another analyst.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `evidence.intake`, `timeline.merge`, `case.verify` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Normalize source events only after preserving native time semantics and coverage; unsupported parsing is not absence.

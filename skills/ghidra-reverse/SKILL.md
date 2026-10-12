@@ -6,7 +6,7 @@ description: >-
   workflows when IDA is unavailable. Read-only-first, evidence-preserving. Use for
   open-source / batch / teaching RE, or as the decompiler entry when no IDA
   license exists.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -99,9 +99,14 @@ analyzeHeadless /path/to/project Proj -import sample.bin -postScript ExportDecom
 
 ## Quality bar
 
-A defensible Ghidra pass uses real, resolved tool paths, annotates function
+A complete Ghidra pass uses real, resolved tool paths, annotates function
 addresses and renames, leaves reproducible steps, and records provenance for every
 finding.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.pe_headers`, `binary.elf_dynamic`, `binary.macho_inventory` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Use native structure/symbol/UUID evidence to configure the import; acquired samples remain unexecuted by these primitives.

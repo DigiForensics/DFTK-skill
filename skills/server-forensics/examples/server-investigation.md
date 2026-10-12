@@ -42,8 +42,7 @@ Build one inventory and reuse it across questions.
 
 ## Skill gaps this case exposed
 
-The toolkit's 68 read-only tools did not cover any of the above; all answers came from shell tooling. The blind spots (now covered by this skill's references):
-
+The toolkit's 71 read-only tools did not cover these live-host questions; the answers came from shell tooling. This skill documents the relevant workflows:
 1. Partition identity — `blkid` PARTUUID (partition-identity.md).
 2. Web/app config & credential review — read PHP/YAML/HTML for DSN, password, business identifiers (web-config-review.md).
 3. Live RDBMS forensics — MySQL enumeration, PII by stable key, aggregation, hash-format detection (live-db-forensics.md).

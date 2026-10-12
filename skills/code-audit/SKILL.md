@@ -1,7 +1,7 @@
 ---
 name: code-audit
 description: Authorized source-code security review and SAST workflows — Semgrep, CodeQL, dangerous-API hunting, auth/access-control review, crypto misuse, and fix verification. Use for white-box review of code you are authorized to assess.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -23,7 +23,7 @@ White-box security review of source code you are authorized to assess. Combines 
 
 - Confirm you have authorized access to the source/repo and the review scope (directory / service / PR diff).
 - Never widen scope beyond what was authorized.
-- Record findings with reproducible evidence; enable the DFTK 3.3.0 audit ledger for any local tooling runs.
+- Record findings with reproducible evidence; enable the DFTK 3.4.0 audit ledger for any local tooling runs.
 
 ## When this skill applies
 
@@ -74,7 +74,12 @@ Optional: ATT&CK / CWE id.
 - related: `../supply-chain-security/`, `../reverse-exe/` (when only a binary is available)
 
 ## Quality bar
-A defensible audit verifies findings manually (not just scanner output), includes remediation, stays within authorized scope, and states confidence per finding.
+A complete audit verifies findings manually (not just scanner output), includes remediation, stays within authorized scope, and states confidence per finding.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `file.search_tree`, `archive.inventory`, `binary.compare` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Use scoped searches and version differences to identify review locations; these primitives do not constitute an AST or data-flow audit.

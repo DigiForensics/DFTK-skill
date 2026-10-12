@@ -9,7 +9,7 @@ description: >-
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
 author: DyNooob @ DigiForensics
-version: 1.0.0
+version: 3.6.0
 tags:
   - forensics
   - dfir
@@ -85,3 +85,8 @@ Distilled from a real case where an app's HTTP POST traffic carried a `sign`
 parameter computed client-side. All question numbers and answer values were
 stripped; only method remains. Keep exams' questions/answers with the
 examination material.
+
+
+## DFTK 3.6 evidence anchors
+
+Use `network.flows`, `network.http_sessions`, `network.tls_inventory` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Distinguish captured traffic from inferred transaction completion; body extraction needs an explicitly enabled STATEFUL workspace.

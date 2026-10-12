@@ -7,7 +7,7 @@ description: >-
   Use for authorized analysis of endpoints you own or are authorized to assess.
   For browser extensions use browser-extension-reverse; for binaries use
   ida-reverse / radare2.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -120,10 +120,15 @@ and business-logic distillation.
 
 ## Quality bar
 
-A defensible JS-reverse pass observes before guessing, builds the local
+A complete JS-reverse pass observes before guessing, builds the local
 environment only from page evidence, records provenance for every step, and
 separates fact from inference — leaving a reproducible Node reproduction another
 analyst can run.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `archive.inventory`, `file.search_tree`, `encoding.decode_candidates` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Store source locations and decoding candidates separately; a reversible decode does not prove the code path executes.

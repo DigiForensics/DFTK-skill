@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased — DFTK 3.5.x capability enhancements
+## 3.6.0 — Integrated capability and verification release
+
+- Align every specialist skill with the integrated runtime and regenerate both
+  capability and specialist catalogs from maintained sources.
+- Add native Mach-O and binary comparison procedures and result/finding digest
+  verification. Retain intake, YARA/web/EVTX hunts, guided Cases and bootstrap.
 
 - Add a browser evidence playbook for Chromium/Firefox bookmarks, Firefox cookie
   metadata and Chromium keyword search records, including timeline integration,
@@ -8,10 +13,19 @@
 
 - Add `dftk_suggest` / CLI `suggest` to capability selection, with input hints,
   declared-output discovery, policy eligibility, and fallback for older servers.
-- Refresh the capability catalog from all 117 live registry contracts, including
+- Refresh the capability catalog from all 127 live registry contracts, including
   parameters, declared dependencies, safety, output kinds, and path roles.
 - Document the seven-tool MCP surface; retain the historical 3.3.0 handshake.
 - Move entrypoint version/author/tags into standard Skill metadata for compatibility.
+
+## 3.4.0 — DFTK-first Agent bootstrap (2026-08-21)
+
+- Made DFTK the only recommended Agent entry point. `dftk agent setup` now installs
+  this version-matched bundle, prepares a separate case workspace, and emits a
+  reviewable MCP configuration fragment without replacing host configuration.
+- Updated the root Skill and MCP guidance for guided intake, case briefs,
+  deterministic next actions, entity correlation, remote read-only collection, EVTX,
+  YARA, and web-shell analysis.
 
 ## 3.3.0 — Align with DFTK 3.3.0 (2026-08-16)
 

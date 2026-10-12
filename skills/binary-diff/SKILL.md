@@ -7,7 +7,7 @@ description: >-
   evidence-preserving. Core method: structured LLM comparison of paired
   disassembly + pseudocode, with programmatic YAML output. Pairs with ida-reverse /
   radare2 for export and application.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -127,8 +127,23 @@ found_struct_offset -> comment(addr=insn_va, "{struct_name}.{member_name}")
 
 ## Quality bar
 
-A defensible migration uses reliable anchors, spot-checks key symbols, caches
+A complete migration uses reliable anchors, spot-checks key symbols, caches
 intermediate results, and records every applied rename in the audit ledger.
 
 ---
 
+
+
+## Native bounded byte comparison
+
+Use `binary.compare` through DFTK when a byte-level baseline is needed before
+semantic reverse analysis. Provide `left`, `right`, and bounded `block_size` /
+`max_bytes` / `limit`. Both inputs stay read-only; record offsets and independent
+source hashes. The count includes every changed block, while previews may be
+truncated (`partial`). An insertion shifts later blocks; byte equality/difference
+is not a claim about behavioral equivalence. Persist the Observation in the case.
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.compare`, `binary.pe_imports`, `binary.elf_dynamic` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Compare byte blocks first, then align functions and symbols separately; shifted blocks are not semantic changes.

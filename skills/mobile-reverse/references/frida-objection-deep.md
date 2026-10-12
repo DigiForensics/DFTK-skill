@@ -44,7 +44,7 @@ frida-trace -U -i "open*" com.target.app        # trace by name
 
 - Record the app SHA-256 and the exact command/script before running.
 - Capture console output to a file; redact keys/tokens/PII before sharing.
-- Enable the DFTK 3.3.0 audit ledger for any local tooling so the session is reproducible.
+- Enable the DFTK 3.4.0 audit ledger for any local tooling so the session is reproducible.
 
 ## Quality bar
 

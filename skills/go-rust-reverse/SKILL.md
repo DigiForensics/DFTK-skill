@@ -6,7 +6,7 @@ description: >-
   recovery. Read-only-first, evidence-preserving. Use for authorized analysis of
   stripped Go/Rust tooling or malicious samples where language metadata is the key
   to recovering function names.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -99,9 +99,14 @@ Rust markers: `rust_begin_unwind`, `panic`, crate paths (`/rustc/...`),
 
 ## Quality bar
 
-A defensible Go/Rust pass recovers key function names (or an equivalent mapping),
+A complete Go/Rust pass recovers key function names (or an equivalent mapping),
 labels the language-runtime evidence, records provenance, and leaves reproducible
 steps.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.elf_dynamic`, `binary.pe_exports`, `binary.compare` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Preserve binary metadata and compare revisions; language-specific symbol recovery requires the specialist procedure.

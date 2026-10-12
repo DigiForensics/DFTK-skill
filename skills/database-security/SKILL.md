@@ -6,7 +6,7 @@ description: >-
   COPY PROGRAM, UDF), and misconfiguration. Read-only-first, evidence-preserving. Use for
   reviewing an instance you own or are authorized to assess; never run destructive
   statements on production unless explicitly permitted in scope.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -77,9 +77,14 @@ Observation/Evidence output.
 
 ## Quality bar
 
-A defensible database-security pass avoids unauthorized writes/deletes, separates
+A complete database-security pass avoids unauthorized writes/deletes, separates
 misconfiguration from an exploitable chain, records provenance, and ends with prioritized
 hardening — not an escalation recipe.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `database.sqlite_forensic_inventory`, `database.sqlite_wal`, `database.sqlite_deleted_records` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Preserve WAL separately and distinguish live rows, deleted candidates and heuristic carves; do not count them as one undifferentiated dataset.

@@ -5,7 +5,7 @@ description: >-
   (SPF/DKIM/DMARC), BEC patterns, and mailbox/OAuth token-abuse research.
   Read-only-first, evidence-preserving. Use for dissecting a sample phishing email,
   assessing a tenant's anti-phishing posture, and building detection IOCs.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -65,9 +65,14 @@ identity side, hand off to `identity-federation`.
 
 ## Quality bar
 
-A defensible email-security pass gives a complete header-authentication verdict, turns
+A complete email-security pass gives a complete header-authentication verdict, turns
 the sample into detectable IOCs, and reviews the tenant's anti-phishing controls —
 without re-delivering the malicious content.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `email.mime_inventory`, `email.auth_analyze`, `email.dkim_verify` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Separate offline header context from network-backed authentication; missing dependencies or disabled DNS are not failed authentication findings.

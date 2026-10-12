@@ -6,7 +6,7 @@ description: >-
   structured annotation. Read-only-first, evidence-preserving. Use when a sample
   needs deep decompilation that radare2 cannot provide, or when migrating symbols
   to a new version (see binary-diff). Commercial IDA Pro required.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -138,9 +138,14 @@ memory, patch, types, stack, signatures, sessions) is catalogued in
 
 ## Quality bar
 
-A defensible IDA pass records imports as evidence, surveys before diving, follows
+A complete IDA pass records imports as evidence, surveys before diving, follows
 cross-references, annotates findings, and leaves a reproducible report another
 analyst can extend.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.pe_imports`, `binary.pe_resources`, `binary.macho_inventory` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Anchor reverse-engineering notes to source hashes and table/command offsets before interpreting behavior.

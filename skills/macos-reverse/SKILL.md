@@ -5,7 +5,7 @@ description: >-
   inspection, Objective-C / Swift symbol and runtime recovery, endpoint-security
   surface review, and Apple-platform malware analysis. Read-only-first,
   evidence-preserving. iOS/IPA analysis routes to mobile-reverse.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -93,9 +93,27 @@ linked dylibs / rpath.
 
 ## Quality bar
 
-A defensible macOS pass records signing / Hardened Runtime status, produces
+A complete macOS pass records signing / Hardened Runtime status, produces
 address-level or symbol-level conclusions, and preserves provenance for every
 finding.
 
 ---
 
+
+
+## Native Mach-O inventory
+
+Start with `binary.macho_inventory` for thin/universal 32/64-bit Mach-O artifacts.
+Use dylib/rpath, UUID, segment and symbol records as structural leads; their offsets
+and source hash anchor deeper analysis. Missing or truncated architecture slices
+must remain explicit. A stored code-signature range establishes presence only;
+verify cryptographic validity using a suitable offline verifier when the claim
+requires it. This primitive does not launch the sample or execute recovered paths.
+
+Format definitions: [Apple loader layouts](https://raw.githubusercontent.com/apple-oss-distributions/xnu/main/EXTERNAL_HEADERS/mach-o/loader.h),
+[Apple universal binary layouts](https://raw.githubusercontent.com/apple-oss-distributions/xnu/main/EXTERNAL_HEADERS/mach-o/fat.h).
+
+
+## DFTK 3.6 evidence anchors
+
+Use `binary.macho_inventory`, `binary.compare`, `file.strings_unicode` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Universal slices must remain separate; code-signature presence is not cryptographic verification.

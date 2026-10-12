@@ -6,7 +6,7 @@ description: >-
   Use for reviewing an SSO deployment you own or are authorized to assess; map the flow,
   find misconfigurations, and recommend fixes. Never test against accounts you are not
   authorized to use.
-version: 1.0.0
+version: 3.6.0
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
@@ -76,9 +76,14 @@ Windows IdP, pair with `server-forensics`.
 
 ## Quality bar
 
-A defensible identity-federation pass maps the full SSO flow, reproduces each misconfig
+A complete identity-federation pass maps the full SSO flow, reproduces each misconfig
 with impact, records provenance, and ends with prioritized hardening — never with an
 account-compromise recipe against real users.
 
 ---
 
+
+
+## DFTK 3.6 evidence anchors
+
+Use `email.auth_analyze`, `browser.firefox_cookies`, `file.search_tree` as native evidence anchors for this workflow. Describe the live contracts before execution; optional parsers may be unavailable. Distinguish cookie/claim presence from authenticated identity; retain container/origin attributes and redact plaintext values by default.
