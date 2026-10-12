@@ -14,6 +14,32 @@ Weak search intents:
 - “answer question 7”
 - the expected answer string copied from a guess
 
+## Suggest from the input or required output
+
+When `dftk_suggest` is available, pass a known evidence path, filename (`$MFT`,
+`Amcache.hve`), or input kind (`pcap`, `registry`). It returns explained candidates
+from the live registry. Relative MCP paths resolve under the server's evidence root.
+Missing files can be planned from their names; header probes read at most 4096 bytes
+from regular files. A signature/extension conflict is a reason to verify the type
+with `artifact.inspect` before deeper analysis.
+
+Use `direction="produce"` with a required output kind such as `tls_sni`,
+`timeline`, or `partition_table`. This matches declared output kinds; it does not
+predict what can be derived from an arbitrary input file and performs no file reads.
+
+Check `why`, `reasons`, `requires`, `parameters`, and `policy_allowed` /
+`policy_blockers`. Policy eligibility covers the safety/network gate only; it does
+not prove the format is supported or dependencies are installed. Suggestions are
+heuristics, not observations. Do not treat no matches as a negative forensic finding.
+If an older server lacks `dftk_suggest`, use `dftk_search_capabilities` instead.
+
+CLI equivalents:
+
+```bash
+dftk suggest capture.pcap
+dftk suggest tls_sni --direction produce
+```
+
 ## Describe before run
 Check:
 - exact parameter names/types;

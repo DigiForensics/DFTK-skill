@@ -6,6 +6,8 @@ Use this when the host Agent cannot use DFTK MCP. To enable MCP instead (preferr
 
 ```bash
 dftk list
+dftk suggest capture.pcap
+dftk suggest tls_sni --direction produce
 dftk list --tag android
 dftk list --produces domain
 dftk describe android.apk_manifest

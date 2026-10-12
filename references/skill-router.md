@@ -1,10 +1,10 @@
 # Skill Router — pick the right module
 
-DFTK-skill ships 29 progressive-disclosure sub-skills under `skills/`. Load the one that matches the task; if several apply, start from the umbrella (`reverse-engineering`, `digital-forensics`) and drill into the tool-specific module. Every module is read-only / evidence-preserving and ties back to the DFTK 3.3.0 audit ledger.
+DFTK-skill ships 30 progressive-disclosure sub-skills under `skills/`. Load the one that matches the task; if several apply, start from the umbrella (`reverse-engineering`, `digital-forensics`) and drill into the tool-specific module. Every module is read-only / evidence-preserving and ties back to the DFTK 3.5.0 audit ledger.
 
 **Full engagement?** Start with `skills/case-orchestrator/` — it routes the goal to the right sub-skills below and runs them through the verified DFTK MCP loop, keeping every action in one CaseSession.
 
-**What can DFTK actually do?** `capabilities.md` is the verified catalog of all 72 DFTK 3.3.0 capabilities (name, safety, params, external-tool requirements) — generated from the live registry. Use it to find the exact `name` for `dftk_describe` / `dftk_run` instead of guessing.
+**What can DFTK actually do?** `capabilities.md` is the verified catalog of all 117 DFTK 3.5.0 capabilities (name, safety, params, external-tool requirements) — generated from the live registry. Use it to find the exact `name` for `dftk_describe` / `dftk_run` instead of guessing.
 
 ## By task
 
@@ -45,7 +45,7 @@ DFTK-skill ships 29 progressive-disclosure sub-skills under `skills/`. Load the 
 - **Suspicious app** → `apk/` or `mobile-reverse/` (static) → `apk-reverse/`/`mobile-reverse/` (dynamic) → `reverse-engineering/` for method.
 - **Unknown protocol** → `pcap/` (capture) → `protocol-reverse/` (recover structure).
 - **Source available** → `code-audit/` (first-party) + `supply-chain-security/` (dependencies/pipelines).
-- **Any local tooling run** → enable DFTK 3.3.0 `--audit` / `DFTK_AUDIT_LOG` so the pass is reproducible; `case-review/` for the evidence graph.
+- **Any local tooling run** → enable DFTK 3.5.0 `--audit` / `DFTK_AUDIT_LOG` so the pass is reproducible; `case-review/` for the evidence graph.
 
 ## MCP-first workflow
 
@@ -71,5 +71,5 @@ server enforces the safety / root / network policy. Typical sequence:
 | `reverse-engineering` tool selection | `dftk_search_capabilities` / `dftk_describe` to confirm what a capability needs |
 | Pre-flight sanity | `dftk_doctor` (also reports which external binaries are present) |
 
-Full launch command, six-tool contract, and the WorkBuddy `mcp.json` snippet:
+Full launch command, seven-tool contract, and the WorkBuddy `mcp.json` snippet:
 `mcp-setup.md`.

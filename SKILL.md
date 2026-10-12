@@ -1,15 +1,11 @@
 ---
 name: dftk
 description: Evidence-preserving digital forensics with DFTK. Use for lawful analysis of APK/Android artifacts, mobile exports, Linux and Windows evidence, SQLite, PCAP/PCAPNG, browser data, email, disk images, timelines, hashes, strings, archives, and related forensic artifacts. Prefer evidence requirements over keyword hunting, use DFTK's structured Observation/Evidence contract, distinguish unsupported/error/blocked from true negative findings, and cite source provenance for conclusions.
-version: 3.3.0
-author: DyNooob @ DigiForensics
 license: Apache-2.0
-tags:
-  - forensics
-  - dfir
-  - incident-response
-  - security
-  - evidence
+metadata:
+  version: "3.5.0"
+  author: DyNooob @ DigiForensics
+  tags: "forensics, dfir, incident-response, security, evidence"
 ---
 # DFTK — Digital Forensics Toolkit
 
@@ -28,6 +24,7 @@ Prefer **DFTK MCP** when the host Agent exposes these tools:
 
 - `dftk_doctor`
 - `dftk_search_capabilities`
+- `dftk_suggest` (when available; older servers can use `dftk_search_capabilities`)
 - `dftk_describe`
 - `dftk_run`
 - `dftk_case`
@@ -35,7 +32,7 @@ Prefer **DFTK MCP** when the host Agent exposes these tools:
 
 MCP is the preferred Agent interface because policy, evidence-root scope, timeout, and output bounding are controlled by the DFTK server rather than by model-generated shell text.
 
-The server is started with `dftk mcp --root <evidence_dir>` (requires `pip install "dftk[mcp]"`). Full launch flags, the six-tool contract, the server-owned safety / root / network / timeout / audit policy, and the WorkBuddy `mcp.json` snippet to connect it live are in `references/mcp-setup.md`.
+The server is started with `dftk mcp --root <evidence_dir>` (requires `pip install "dftk[mcp]"`). Full launch flags, the seven-tool contract, the server-owned safety / root / network / timeout / audit policy, and the WorkBuddy `mcp.json` snippet to connect it live are in `references/mcp-setup.md`.
 
 **Engagement orchestration.** For a full forensic engagement (not a one-off lookup), start with the `case-orchestrator` skill — it routes the goal to the right specialist sub-skills and drives them through the verified MCP loop (`dftk_case` → `dftk_search_capabilities` → `dftk_describe` → `dftk_run` → `dftk_read_case_run` → `dftk_case` handoff), keeping every action inside one CaseSession for continuous chain of custody.
 
@@ -45,6 +42,7 @@ If MCP is unavailable, use the existing DFTK CLI:
 
 ```text
 dftk list
+dftk suggest <evidence-path-or-kind>
 dftk describe <tool>
 dftk run <tool> --params '<json>'
 dftk export-manifest
@@ -110,11 +108,11 @@ Do not memorize or hallucinate DFTK tool names.
 
 With MCP:
 
-1. `dftk_search_capabilities` using the evidence you need (not the expected answer);
+1. use `dftk_suggest` for a known artifact or required output kind; use `dftk_search_capabilities` for broader evidence needs or older servers;
 2. inspect the best candidate with `dftk_describe`;
 3. execute only after checking parameters, safety, network requirement, `produces`, and parser requirements.
 
-With CLI, use `dftk list`, `dftk describe`, or `dftk export-manifest` for the same purpose.
+With CLI, use `dftk suggest`, `dftk list`, `dftk describe`, or `dftk export-manifest` for the same purpose.
 
 Prefer the lowest-cost capability that can materially reduce the current evidence gap. Prefer structured artifact-native parsers before broad byte/string search when both can answer the claim. Use broad search as discovery or fallback, not as automatic proof.
 

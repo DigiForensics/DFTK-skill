@@ -6,7 +6,7 @@ DFTK provides deterministic forensic capabilities and structured Observation/Evi
 
 ## Version
 
-`3.3.0` — for DFTK `3.3.x`.
+`3.5.0` — for DFTK `3.5.x`.
 
 ## Install
 

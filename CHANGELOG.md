@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — DFTK 3.5.x capability enhancements
+
+- Add a browser evidence playbook for Chromium/Firefox bookmarks, Firefox cookie
+  metadata and Chromium keyword search records, including timeline integration,
+  WAL coverage boundaries, redaction, attribution limits and upstream schemas.
+
+- Add `dftk_suggest` / CLI `suggest` to capability selection, with input hints,
+  declared-output discovery, policy eligibility, and fallback for older servers.
+- Refresh the capability catalog from all 117 live registry contracts, including
+  parameters, declared dependencies, safety, output kinds, and path roles.
+- Document the seven-tool MCP surface; retain the historical 3.3.0 handshake.
+- Move entrypoint version/author/tags into standard Skill metadata for compatibility.
+
 ## 3.3.0 — Align with DFTK 3.3.0 (2026-08-16)
 
 - Documented DFTK's chain-of-custody audit ledger: `references/direct-cli.md` gains a section on `--audit` / `DFTK_AUDIT_LOG`, and SKILL.md §13 points to it for examinations that need a defensible record of what was executed. Requires DFTK 3.3.0 or later, which provides the ledger; the guidance is inert on older releases.

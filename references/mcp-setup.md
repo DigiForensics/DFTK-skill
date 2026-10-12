@@ -59,7 +59,7 @@ dftk mcp --root /abs/path/to/evidence --max-safety READ_ONLY
 
 If `dftk mcp` prints a traceback or exits immediately, fix the cause (see
 Troubleshooting) before trusting it. Once it stays running, go to §5 and click
-**Trust** — the six `dftk_*` tools then appear in this Skill's MCP mode.
+**Trust** — the seven `dftk_*` tools then appear in this Skill's MCP mode.
 
 ## 3. Tools exposed (server name: `DFTK`)
 
@@ -67,6 +67,7 @@ Troubleshooting) before trusting it. Once it stays running, go to §5 and click
 |------|-----------|---------|
 | `dftk_doctor` | `()` | Health + the server-owned MCP safety/root/network/timeout policy. |
 | `dftk_search_capabilities` | `(query="", tags=None, produces=None, limit=12)` | Discover capabilities by evidence intent, tags, or produced-evidence type. Supports Chinese aliases (联系人, 短信, 通话, 流量, 注册表, 浏览器, 时间, 哈希, 邮件, …). |
+| `dftk_suggest` | `(query, direction="consume", limit=12)` | Explain candidate capabilities from an evidence path/kind, or match declared output kinds with `produce`. Includes safety/network policy eligibility. Older servers may omit this tool. |
 | `dftk_describe` | `(name)` | Exact parameter / safety / dependency / tag / produced-evidence contract for one capability. |
 | `dftk_run` | `(name, params=None, case_id=None)` | Execute one capability under server policy; optionally persist it in an existing case. |
 | `dftk_case` | `(action, case_id=None, name=None, format="json")` | Manage the CaseSession: `new`, `list`, `show`, `timeline`, `export`. |
@@ -103,7 +104,7 @@ Merge the server into your host's MCP config (WorkBuddy example: `~/.workbuddy/m
 ```
 
 Then open the connector management page, find the `dftk` server, and click
-**Trust** to enable it. After that the six `dftk_*` tools appear in this Skill's
+**Trust** to enable it. After that the seven `dftk_*` tools appear in this Skill's
 MCP mode automatically — no shell text needed.
 
 > `dftk` must be installed (`pip install "dftk[mcp]"`) and on `PATH`. If your
@@ -133,8 +134,9 @@ safety/root scope are **not** enforced by a server and must be respected manuall
 
 1. **Health / policy** — `dftk_doctor()` confirms the server is up and shows the
    active safety / root / network / timeout policy you are bound by.
-2. **Discover** — `dftk_search_capabilities(query="微信聊天记录")` (Chinese alias
-   supported) returns candidate capabilities with their tags.
+2. **Discover** — use `dftk_suggest(query="capture.pcap")` for an input artifact or
+   `dftk_suggest(query="tls_sni", direction="produce")` for required outputs.
+   Use `dftk_search_capabilities` for broader claim searches or older servers.
 3. **Contract** — `dftk_describe(name="…")` shows exact params, safety, dependencies,
    and the produced-evidence type.
 4. **Run** — `dftk_run(name="…", params={…}, case_id="case-001")` executes under
@@ -205,7 +207,7 @@ These two rules are easy to get wrong and were confirmed by a real MCP client se
   `name` you passed at creation is **not** accepted by later actions
   (`no such case: <name>`).
 
-### Verified transcript (abridged)
+### Historical 3.3.0 transcript (abridged; predates `dftk_suggest`)
 
 ```text
 $ dftk mcp --root /evidence --max-safety READ_ONLY   # stdio; no port/URL
@@ -229,4 +231,4 @@ dftk_case(action="export",   case_id="case-20260816T034157Z-ea679b", format="md"
 
 The `dftk` server is wired into the host MCP config (WorkBuddy example: `~/.workbuddy/mcp.json`), stdio, root `/path/to/evidence`
 (`READ_ONLY`). After installing `dftk[mcp]`, open the connector page, **Trust** the `dftk`
-server, and the six tools become available to the agent.
+server, and the seven tools become available to the agent.
