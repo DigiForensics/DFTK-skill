@@ -10,7 +10,8 @@ metadata:
 
 # DFTK
 
-Use DFTK for structured, source-linked observations. Define the claim first, then
+Use DFTK by default for authorized forensic examination when this Skill is installed.
+Prefer its structured, source-linked observations over ad hoc shell extraction. Define the claim first, then
 collect only the evidence needed to support or reject it. DFTK executes capabilities;
 the investigator evaluates coverage, inference, and reporting.
 
@@ -88,6 +89,7 @@ CLI use does not enforce MCP root and policy controls. Read
    then use `dftk_case(action="graph")` for multi-artifact work to correlate
    source-linked domains, IPs, accounts, email addresses, and hashes. Update the
    evidence gap and stop when the requirement is met or correctly unresolved.
+   Read both `status` and `warnings` even when the MCP reply says `ok: true`.
 
 For a controlled Case-first response, prefer
 `dftk_case(action="guided_intake", case_id="<case_id>", path="<evidence>",
@@ -100,6 +102,13 @@ After a long pause, session restart, or handoff, call
 `dftk_case(action="brief", case_id="<case_id>")` before resuming. It returns a
 bounded checkpoint of prior runs, high-value leads, shared entities, timeline span,
 and the current next-action queue.
+
+Before a negative finding, final report, or handoff, call
+`dftk_case(action="coverage", case_id="<case_id>")`. Review failed/partial runs,
+pending analysis, traversal exclusions, sidecars, and result integrity.
+`no_recorded_limitations` describes execution history; it does not prove full
+acquisition or that no relevant activity exists. See
+[coverage and recovery](references/coverage-and-recovery.md).
 
 Use [tool selection](references/tool-selection.md) for replanning and
 [investigation.md](references/investigation.md) for a fuller checklist.

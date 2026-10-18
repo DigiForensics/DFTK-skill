@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased
+
+- Add [references/coverage-and-recovery.md](references/coverage-and-recovery.md):
+  treat `evidence.intake.facts.coverage` and `inspection_failures` as declared
+  evidence gaps, keep `extension_hint` identification as a routing hint rather
+  than proof, page persisted facts instead of trusting a bounded preview, and
+  recover purposefully from failed or partial runs instead of blind retries.
+- Require `dftk_case(action="coverage")` before a negative finding, final report,
+  or handoff; state that `no_recorded_limitations` describes execution history
+  and does not prove full acquisition.
+- Read both `status` and `warnings` on every MCP reply, including `ok: true`.
+- Document `timeline.hunt_sequences` for event-chain correlation across persisted
+  Observations; it correlates recorded events and does not acquire missing
+  artifacts or infer missing events.
+- Refresh the capability catalog and MCP setup guidance for the sequence-hunting
+  and coverage additions.
+
 ## 3.6.0 — Integrated capability and verification release
 
 - Align every specialist skill with the integrated runtime and regenerate both

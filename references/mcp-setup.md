@@ -24,6 +24,11 @@ dftk agent setup \
 
 The command installs the DFTK-skill release matching the installed runtime and emits
 two importable fragments: portable JSON (`mcp_json`) and Codex TOML (`codex_toml`).
+Generated launch entries bind the installing Python interpreter with `-m dftk`
+and enable a workspace audit ledger. Keep that interpreter/environment available;
+rerun setup if it moves. Custom `CODEX_HOME` is respected for Skill installation
+and diagnostics.
+
 It intentionally does **not** modify a host's global MCP configuration; import the
 fragment using the host's normal UI/configuration workflow and approve the server.
 Use `--dry-run` first when the Agent must show its intended destinations and policy.
@@ -90,7 +95,7 @@ host's normal approval flow.
 | `dftk_suggest` | `(query, direction="consume", limit=12)` | Explained candidates from an input filename/kind; `produce` matches output kinds without file reads. Older servers may omit it. |
 | `dftk_describe` | `(name)` | Exact parameter / safety / dependency / tag / produced-evidence contract for one capability. |
 | `dftk_run` | `(name, params=None, case_id=None)` | Execute one capability under server policy; optionally persist it in an existing case. |
-| `dftk_case` | `(action, case_id=None, name=None, format="json", path=None, objective=None, max_steps=2)` | Manage the CaseSession: `new`, `list`, `show`, `guided_intake`, `brief`, `next`, `timeline`, `graph`, `export`. `guided_intake` persists intake plus selected child runs; `brief` is a bounded recovery/handoff checkpoint; `next` returns an action queue; `graph` correlates source-linked entities. |
+| `dftk_case` | `(action, case_id=None, name=None, format="json", path=None, objective=None, max_steps=2)` | Manage the CaseSession: `new`, `list`, `show`, `guided_intake`, `brief`, `coverage`, `next`, `timeline`, `graph`, `export`. `guided_intake` persists intake plus selected child runs; `brief` is a bounded recovery/handoff checkpoint; `next` returns an action queue; `graph` correlates source-linked entities. |
 | `dftk_read_case_run` | `(case_id, seq, evidence_offset=0, evidence_limit=20, fact_path="", value_offset=0, value_limit=50)` | Page one already-persisted Observation **without rerunning** the capability. |
 
 ## 4. Server policy
@@ -165,7 +170,9 @@ yourself.
    server policy; large output is truncated with a `guidance` string.
 5. **Page the full result** — `dftk_read_case_run(case_id="case-001", seq=1)` reads
    the persisted Observation *without* re-running the capability.
-6. **Manage the case** — `dftk_case(action="timeline", case_id="case-001")` to
+6. **Review coverage** — `dftk_case(action="coverage", case_id="case-001")`
+   exposes failed/partial runs, pending analysis, and result-integrity issues.
+7. **Manage the case** — `dftk_case(action="timeline", case_id="case-001")` to
    review, `dftk_case(action="export", …)` to hand off.
 
 The Skill's per-skill `skills/<name>/examples/*.md` (e.g. `malware-analysis`,
@@ -200,7 +207,8 @@ The top-level `ok` now **mirrors** the run outcome, so branch on it directly:
 ok = reply.get("ok")
 status = reply.get("observation", {}).get("status")
 if ok:
-    result = reply["observation"]          # safe to consume evidence / facts
+    result = reply["observation"]
+    # Review status, warnings, errors, and coverage before using facts in a claim.
 elif status == "unsupported":
     # input was not the expected type for this capability
     # -> choose a different capability, or supply real evidence of the right kind

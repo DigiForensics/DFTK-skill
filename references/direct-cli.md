@@ -27,6 +27,7 @@ Defaults are READ_ONLY and network-off. Raising safety/network is a human author
 ```bash
 dftk case new --name <name>
 dftk case run <case_id> <tool> --params '<json>'
+dftk case coverage <case_id>
 dftk case timeline <case_id>
 dftk case export <case_id> --format md
 ```

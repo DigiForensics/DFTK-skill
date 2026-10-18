@@ -26,3 +26,7 @@ Phrase scope honestly, e.g.:
 This is stronger and more reproducible than:
 
 > “No message exists.”
+
+Before a Case-level negative, review `dftk_case(action="coverage")` and the
+[coverage and recovery guide](coverage-and-recovery.md). Execution status alone
+does not establish acquisition completeness, sidecar coverage, or parser support.

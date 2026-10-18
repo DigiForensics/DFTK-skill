@@ -24,7 +24,10 @@ specialist domains. It coordinates the work; domain skills provide the procedure
 5. Run it with `dftk_run(..., case_id="<case_id>")`.
 6. Check the result before using it. `ok: true` means `status` is `ok` or `partial`;
    otherwise inspect `observation.status` and `observation.errors`.
-7. Read large persisted results with `dftk_read_case_run`, then use
+7. Review `dftk_case(action="coverage", case_id="<case_id>")` before conclusions;
+   resolve relevant run failures, sidecar exclusions, integrity defects, and pending
+   analysis. See [coverage and recovery](../../references/coverage-and-recovery.md).
+8. Read large persisted results with `dftk_read_case_run`, then use
    `dftk_case(action="timeline"|"export", case_id="<case_id>")` for correlation and
    handoff.
 
