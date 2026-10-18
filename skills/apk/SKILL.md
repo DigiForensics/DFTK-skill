@@ -10,7 +10,7 @@ description: >-
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
 author: DyNooob @ DigiForensics
-version: 3.6.0
+version: 3.6.1
 tags:
   - forensics
   - dfir

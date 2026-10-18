@@ -6,7 +6,7 @@ description: >-
   COPY PROGRAM, UDF), and misconfiguration. Read-only-first, evidence-preserving. Use for
   reviewing an instance you own or are authorized to assess; never run destructive
   statements on production unless explicitly permitted in scope.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

@@ -17,7 +17,7 @@ Agent 应安装 `dftk[mcp]`；随后 `dftk agent setup --install-skill` 会自�
 
 ## 版本
 
-`3.6.0`，与 DFTK `3.6.x` 对齐。
+`3.6.1`，与 DFTK `3.6.x` 对齐。
 
 ## 安装
 

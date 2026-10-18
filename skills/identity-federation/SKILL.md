@@ -6,7 +6,7 @@ description: >-
   Use for reviewing an SSO deployment you own or are authorized to assess; map the flow,
   find misconfigurations, and recommend fixes. Never test against accounts you are not
   authorized to use.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

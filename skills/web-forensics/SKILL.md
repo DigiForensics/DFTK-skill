@@ -1,7 +1,7 @@
 ---
 name: web-forensics
 description: Offline web-application forensics for configuration exports, access logs, deployment trees, and request evidence. Use for authorized review of saved web artifacts; route live hosts to server-forensics and source review to code-audit.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 tags: [forensics, web, logs, configuration, incident-response]

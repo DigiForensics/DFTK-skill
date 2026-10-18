@@ -7,7 +7,7 @@ description: >-
   Use for authorized analysis of endpoints you own or are authorized to assess.
   For browser extensions use browser-extension-reverse; for binaries use
   ida-reverse / radare2.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

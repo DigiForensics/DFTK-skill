@@ -20,7 +20,7 @@ sequence is in [INSTALL_AGENT.md](INSTALL_AGENT.md).
 
 ## Version
 
-`3.6.0` — for DFTK `3.6.x`.
+`3.6.1` — for DFTK `3.6.x`.
 
 ## Install
 

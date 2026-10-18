@@ -1,7 +1,7 @@
 ---
 name: case-review
 description: Read-only review of a forensics/reverse-engineering case package before report handoff — verifies scope readiness, Evidence→Finding→Path traceability, work-item and timeline coverage, and artifact hash integrity. Use to make a case defensible before it leaves your hands.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

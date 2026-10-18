@@ -1,7 +1,7 @@
 ---
 name: case-orchestrator
 description: Coordinate a multi-step, evidence-preserving digital-forensics case. Use it to route work to specialist skills and keep DFTK observations in one CaseSession.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

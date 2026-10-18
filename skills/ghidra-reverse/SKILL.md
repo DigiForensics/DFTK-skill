@@ -6,7 +6,7 @@ description: >-
   workflows when IDA is unavailable. Read-only-first, evidence-preserving. Use for
   open-source / batch / teaching RE, or as the decompiler entry when no IDA
   license exists.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

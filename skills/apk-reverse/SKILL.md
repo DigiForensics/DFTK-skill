@@ -6,7 +6,7 @@ description: >-
   triage. Read-only-first; modification only for apps you own or are authorized to
   assess. Pairs with the read-only `apk` module (static forensic entry-point /
   native-secret triage) and with `ida-reverse` / `radare2` for the .so layer.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.6.1 — Coverage and recovery guidance
 
 - Add [references/coverage-and-recovery.md](references/coverage-and-recovery.md):
   treat `evidence.intake.facts.coverage` and `inspection_failures` as declared

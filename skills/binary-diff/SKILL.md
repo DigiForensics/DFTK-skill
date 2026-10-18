@@ -7,7 +7,7 @@ description: >-
   evidence-preserving. Core method: structured LLM comparison of paired
   disassembly + pseudocode, with programmatic YAML output. Pairs with ida-reverse /
   radare2 for export and application.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

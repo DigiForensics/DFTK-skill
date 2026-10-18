@@ -8,7 +8,7 @@ description: >-
   isolated lab, and findings go through responsible disclosure — never weaponization.
   Pairs with reverse-exe / ida-reverse / radare2 for extracted binaries and with
   binary-diff for cross-version symbol migration.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

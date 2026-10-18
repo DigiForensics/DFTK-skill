@@ -6,7 +6,7 @@ description: >-
   structured annotation. Read-only-first, evidence-preserving. Use when a sample
   needs deep decompilation that radare2 cannot provide, or when migrating symbols
   to a new version (see binary-diff). Commercial IDA Pro required.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

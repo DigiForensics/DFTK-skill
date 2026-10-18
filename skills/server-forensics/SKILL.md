@@ -1,7 +1,7 @@
 ---
 name: server-forensics
 description: Live Linux server and web-application forensics using standard read-only tooling (blkid, ss, ps, docker, mysql client, openssl). Use for CTF/course exercises and lawful investigations that require partition identity, service/port enumeration, web configuration and credential review, live RDBMS PII and aggregation, encrypted-archive identification and decryption, containerized evidence access, and SSH live-forensics. Complements DFTK: prefer DFTK when evidence is a local file/image; use this skill when the evidence is a running server reachable over SSH. Emphasize read-only access, evidence provenance, and the claim -> evidence -> capability -> execute -> verify loop.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

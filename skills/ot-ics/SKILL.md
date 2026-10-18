@@ -6,7 +6,7 @@ description: >-
   physical harm is possible from mistakes, so written authorization and a passive-first
   stance are mandatory. Use for reviewing an OT environment you own or are authorized to
   assess.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

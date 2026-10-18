@@ -5,7 +5,7 @@ description: >-
   inspection, Objective-C / Swift symbol and runtime recovery, endpoint-security
   surface review, and Apple-platform malware analysis. Read-only-first,
   evidence-preserving. iOS/IPA analysis routes to mobile-reverse.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

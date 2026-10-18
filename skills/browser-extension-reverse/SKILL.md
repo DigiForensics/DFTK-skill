@@ -6,7 +6,7 @@ description: >-
   script injection, and extension-based credential / traffic logic recovery.
   Read-only-first, evidence-preserving. Use for authorized analysis, malicious-extension
   IOC extraction, and supply-chain extension-poisoning investigation.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

@@ -5,7 +5,7 @@ description: >-
   (SPF/DKIM/DMARC), BEC patterns, and mailbox/OAuth token-abuse research.
   Read-only-first, evidence-preserving. Use for dissecting a sample phishing email,
   assessing a tenant's anti-phishing posture, and building detection IOCs.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

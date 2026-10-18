@@ -6,7 +6,7 @@ description: >-
   recovery. Read-only-first, evidence-preserving. Use for authorized analysis of
   stripped Go/Rust tooling or malicious samples where language metadata is the key
   to recovering function names.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

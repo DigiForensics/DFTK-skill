@@ -1,7 +1,7 @@
 ---
 name: protocol-reverse
 description: Authorized reverse engineering of custom binary protocols, Protobuf/gRPC, WebSocket frames, and PCAP-driven protocol recovery. Use when the task is recovering a message layout, state machine, or serialization format from traffic or a client — not web parameter signing (use reverse-exe/mobile-reverse for that).
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

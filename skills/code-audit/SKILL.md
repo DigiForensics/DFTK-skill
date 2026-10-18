@@ -1,7 +1,7 @@
 ---
 name: code-audit
 description: Authorized source-code security review and SAST workflows — Semgrep, CodeQL, dangerous-API hunting, auth/access-control review, crypto misuse, and fix verification. Use for white-box review of code you are authorized to assess.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

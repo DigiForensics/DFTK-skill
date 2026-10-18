@@ -1,7 +1,7 @@
 ---
 name: digital-forensics
 description: Authorized digital forensics and incident-response triage — memory dumps, disk/E01 timelines, PCAP溯源, host artifacts, and evidence preservation. Use for lawful investigations that require chain-of-custody, Volatility/Plaso timelines, Windows host artifacts, or IR evidence handling. Pairs with DFTK for local file/artifact parsing and with the DFTK 3.4.0 audit ledger for process provenance.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

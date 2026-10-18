@@ -1,7 +1,7 @@
 ---
 name: threat-hunting
 description: Blue-team threat hunting and detection engineering — hypothesis-driven hunting, Sigma/YARA detection authoring, SIEM query design, and incident-detection validation. Use for authorized defensive hunting and detection work only.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

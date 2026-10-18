@@ -6,7 +6,7 @@ description: >-
   and vulnerability reachability. Defensive, evidence-preserving. Use for open-source
   dependency review, third-party component compliance, container hardening, and
   pipeline security gating. Regulation-aware (SBOM mandates, EU CRA).
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

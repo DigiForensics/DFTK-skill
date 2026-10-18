@@ -1,7 +1,7 @@
 ---
 name: mobile-reverse
 description: Authorized Android and iOS application reverse engineering and security analysis — APK/IPA inspection, runtime instrumentation, SSL pinning and root/jailbreak detection review, and mobile crypto extraction. Use for lawful analysis and security testing of mobile apps you are authorized to examine.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

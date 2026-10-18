@@ -1,7 +1,7 @@
 ---
 name: reverse-engineering
 description: General reverse engineering methodology for compiled, obfuscated, packed, or virtualized targets — binaries, APKs, WASM, firmware, custom VMs, bytecode, and anti-analysis logic. Use when the real blocker is understanding how a target works (not exploiting it). Read-only analysis; pivot to specialized sub-skills for deeper work.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

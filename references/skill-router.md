@@ -7,7 +7,7 @@ that matches the task; when several apply, begin with an umbrella skill such as
 
 **Multi-step engagement:** start with `skills/case-orchestrator/`. It routes the work to relevant sub-skills and keeps DFTK runs in one CaseSession.
 
-`capabilities.md` lists all 127 DFTK 3.6.0 capabilities, including names, safety levels, parameters, and external-tool requirements. Use it to identify the exact name for `dftk_describe` or `dftk_run`.
+`capabilities.md` lists all 128 DFTK 3.6.1 capabilities, including names, safety levels, parameters, and external-tool requirements. Use it to identify the exact name for `dftk_describe` or `dftk_run`.
 
 ## By task
 
@@ -50,7 +50,7 @@ that matches the task; when several apply, begin with an umbrella skill such as
 - **Unknown protocol** → `pcap/` (capture) → `protocol-reverse/` (recover structure).
 - **Source available** → `code-audit/` (first-party) + `supply-chain-security/` (dependencies/pipelines).
 - **Saved web root or access logs** → `web-forensics/` → `server-forensics/` only when live-host evidence is needed.
-- **Any local tooling run** → enable DFTK 3.6.0 `--audit` / `DFTK_AUDIT_LOG` so the pass is reproducible; `case-review/` for the evidence graph.
+- **Any local tooling run** → enable DFTK 3.6.1 `--audit` / `DFTK_AUDIT_LOG` so the pass is reproducible; `case-review/` for the evidence graph.
 
 ## MCP-first workflow
 

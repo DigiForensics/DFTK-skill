@@ -7,7 +7,7 @@ description: >-
   for CLI reverse engineering, rabin2/rasm2/radiff2/rahash2/rax2 usage, and r2
   scripting. Route to ida-reverse for decompiler / pseudocode work, or to
   reverse-exe / malware-analysis for static malware triage.
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics

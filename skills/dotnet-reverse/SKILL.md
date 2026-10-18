@@ -7,7 +7,7 @@ description: >-
   .dll, ConfuserEx / SmartAssembly / Babel / Eazfuscator / .NET Reactor, and for
   authorized analysis of .NET malware loaders or red-team tooling. Not for native
   binaries (use reverse-exe / ida-reverse).
-version: 3.6.0
+version: 3.6.1
 author: DyNooob @ DigiForensics
 license: Apache-2.0
 copyright: Copyright 2026 DyNooob @ DigiForensics
